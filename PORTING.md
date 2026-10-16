@@ -65,4 +65,15 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
    `No module named 'ptx_gym.kernels.papers'`). setup-vm.sh symlinks the wheel's
    ptxas into the source tree and loads ptx_gym from the source tree via a .pth.
 
+10. TAIC prompt caveats (`.upstream/taic/prompts/`). (a) The FP16-GEMM and
+    FlashAttention expert rule blocks never fire: `prompts/initial.py:81-92` gates
+    them on `ptx_gym.kernels.level2_float16` / `FlashAttentionFloat16Kernel`, which
+    don't exist in the pinned PTX Gym; only the convolution block fires. The paper's
+    runs may have included them. (The FA block also describes a causal 8x16x256x64
+    kernel, not ours.) (b) Prompts differ by provider: OpenAI "Fastest PTX", Anthropic
+    "Basic PTX ... prioritize correctness", plus extra GEMM guidance; cross-provider
+    comparisons also compare instructions. (c) The performance rule pushes ldmatrix,
+    tensor cores and async copies "when useful for the target"; sm_70 lacks ldmatrix
+    and cp.async, so expect failed attempts on V100.
+
 No sm_75 portability claim can be made without running on a T4.
