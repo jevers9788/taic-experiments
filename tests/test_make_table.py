@@ -21,7 +21,7 @@ with tempfile.TemporaryDirectory() as tmp:
         'implementations': {'pytorch_eager': ok(9.0), 'torch_scaled_mm_fp8': {'correct': False}}}))
     main(root)
     rows = {(r['gpu'], r['kernel']): r for r in csv.DictReader(open(root / 'baselines.csv'))}
-    assert len(rows) == 21
+    assert len(rows) == 27
     gemm = rows['L4', 'MatrixMultiplicationFloat16']
     assert gemm['status'] == 'measured' and gemm['triton_p50_ms'] == '2'
     assert gemm['best_stock'] == 'torch_mm_cublas' and gemm['triton_pct_fp16_mm'] == '80'

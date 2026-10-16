@@ -19,6 +19,9 @@ KERNELS = [
     'SageAttentionICLR2025', 'BitDeltaNeurIPS2024Matmul',
     # FP8 (e4m3) inputs: native on sm_89, no FP8 hardware on sm_75 (dtype emulation test).
     'MatrixMultiplicationFloat8',
+    # GEMV is LLM decoding's bottleneck and purely bandwidth-bound: FP8 storage moves
+    # half the bytes of FP16, so it can beat the FP16 ceiling on the same card.
+    'MatrixVectorMultiplicationFloat16Kernel', 'MatrixVectorMultiplicationFloat8Kernel',
 ]
 
 
@@ -83,7 +86,7 @@ def reference(name, op, x):
         a = a.float()
         return (a * torch.rsqrt(a.square().mean(-1, keepdim=True) + op.eps)
                 * w.float()).half()
-    if name.startswith('MatrixMultiplicationFloat'):  # FP16 and FP8 inputs, FP16 output
+    if name.startswith(('MatrixMultiplicationFloat', 'MatrixVector')):  # FP16/FP8 in, FP16 out
         return (x[0].float() @ x[1].float()).half()
     if name.startswith('FlashAttention'):
         q, k, v = x
@@ -190,6 +193,8 @@ def main():
         functions['torch_scaled_mm_fp8'] = lambda x: torch._scaled_mm(
             x[0], x[1], scale_a=one, scale_b=one, out_dtype=torch.float16)
         prepare['torch_scaled_mm_fp8'] = lambda x: (x[0], column_major(x[1]), x[2])
+    if args.kernel == 'MatrixVectorMultiplicationFloat8Kernel':
+        functions['torch_upcast_fp16_mv'] = lambda x: torch.mv(x[0].half(), x[1].half())
     for label, fn in functions.items():
         result = {}
         try:

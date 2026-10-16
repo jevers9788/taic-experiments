@@ -5,7 +5,8 @@ import re
 from pathlib import Path
 
 GPUS = ['L4', 'T4', 'V100']
-STOCK = ['torch_mm_cublas', 'torch_sdpa_output_only', 'torch_upcast_fp16_mm', 'torch_scaled_mm_fp8']
+STOCK = ['torch_mm_cublas', 'torch_sdpa_output_only', 'torch_upcast_fp16_mm', 'torch_scaled_mm_fp8',
+         'torch_upcast_fp16_mv']
 COLUMNS = ['gpu', 'kernel', 'status', 'triton_compiles', 'triton_p50_ms', 'pytorch_p50_ms',
            'best_stock', 'best_stock_p50_ms', 'triton_pct_copy_bw', 'triton_pct_fp16_mm',
            'source', 'notes']

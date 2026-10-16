@@ -17,7 +17,7 @@ step identity .venv/bin/python scripts/check_candidate.py --identity --output "$
 step handwritten .venv/bin/python scripts/check_candidate.py --output "$out/handwritten-relu.json"
 # TAIC end to end with a stub model (no API calls); see scripts/taic_fixture.py.
 step taic-fixture .venv/bin/python scripts/taic_fixture.py --trace-path "$out/taic-fixture"
-for k in SoftmaxFloat16Kernel MatrixMultiplicationFloat16 RMSNormFloat16Kernel FlashAttentionNeurIPS2022Forward SageAttentionICLR2025 BitDeltaNeurIPS2024Matmul MatrixMultiplicationFloat8; do
+for k in SoftmaxFloat16Kernel MatrixMultiplicationFloat16 RMSNormFloat16Kernel FlashAttentionNeurIPS2022Forward SageAttentionICLR2025 BitDeltaNeurIPS2024Matmul MatrixMultiplicationFloat8 MatrixVectorMultiplicationFloat16Kernel MatrixVectorMultiplicationFloat8Kernel; do
   step "baseline-$k" .venv/bin/python scripts/baselines.py "$k" --output "$out/$k.json"
 done
 echo SESSION_DONE > "logs/$gpu-session.done"
