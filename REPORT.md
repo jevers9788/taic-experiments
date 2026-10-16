@@ -58,7 +58,8 @@ outputs; PORTING.md 3).
    (Granite 4.0, Nemotron-H, Falcon-H1).
 3. Triton-free launcher, so TAIC can target kernels Triton can't compile
    (SageAttention, FP8); PORTING.md 2.
-4. Real TAIC runs (user): GEMM, BitDelta, FlashAttention, FP8 GEMV first.
+4. Real TAIC runs (user) on kernels Triton compiles: FP16 GEMV (cheap first
+   run), BitDelta, FP16 GEMM, FlashAttention. FP8/SageAttention need step 3.
 5. Optional: parallel pre-compilation for slow pre-Ampere autotunes.
 
 ## Publishing
