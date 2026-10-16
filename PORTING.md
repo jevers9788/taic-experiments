@@ -76,4 +76,11 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     tensor cores and async copies "when useful for the target"; sm_70 lacks ldmatrix
     and cp.async, so expect failed attempts on V100.
 
+11. PTX Gym's compute-sanitizer gate times out on large kernels on V100:
+    `ptx_gym/evaluation/sanitizer.py:214` hard-codes 120 s and runs memcheck,
+    racecheck, synccheck and initcheck at full problem size. Triton's own FP16 GEMM
+    PTX failed it ("Compute Sanitizer timed out after 120 seconds"), so TAIC rejects
+    every GEMM candidate (agent.py:645) before any model work counts. Must be resolved
+    before paid runs (raise the timeout from the launcher, or `--disable-sanitizer`).
+
 No sm_75 portability claim can be made without running on a T4.

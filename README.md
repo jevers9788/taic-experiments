@@ -80,6 +80,13 @@ ownership must be restored afterward.
      pricing table (`.upstream/taic/utils/cost.py`); others log "cost
      unavailable". Per-run cost: `runs/<run>/prices.log`.
    - TAIC needs Triton to compile the kernel first (PORTING.md item 2).
+   - TAIC re-autotunes Triton at startup (~1 h for FP16 GEMM on V100). Add
+     `--tuning-from results/<gpu>/KERNEL.json` (ours) to reuse the config our
+     baseline saved; generation stays direct and Triton is still timed live.
+     Do not use TAIC's `--start-json` for this: it requires a PTX candidate and
+     seeds generation from it (a different method from the paper's).
+     The fixture takes the same flag and `--kernel` (non-ReLU kernels get
+     Triton's own PTX back, so ~1.0x).
 
 See REPORT.md for remaining work and PORTING.md for correctness concerns.
 
