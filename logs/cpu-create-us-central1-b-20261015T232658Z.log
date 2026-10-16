@@ -1,0 +1,25 @@
+WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: https://developers.google.com/compute/docs/disks#performance.
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n2-standard-32 VM instance is currently unavailable in the us-central1-b
+      zone. Try requesting the VM in another zone. For more information, view the
+      troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: ''
+      vmType: n2-standard-32
+      zone: us-central1-b
+      zonesAvailable: ''
+    reason: stockout
+message: The zone 'projects/<gcp-project>/zones/us-central1-b' does not have enough
+  resources available to fulfill the request.  '(resource type:compute)'.
+

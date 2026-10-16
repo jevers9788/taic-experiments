@@ -1,0 +1,30 @@
+Command: .venv/bin/python scripts/check_candidate.py --identity --output results/v100/identity-relu.json
+Start: 2026-10-16T15:14:38Z
+Tuning ReLUFloat16Kernel:   0%|          | 0/21 [00:00<?, ?configuration/s]Tuning ReLUFloat16Kernel:   5%|▍         | 1/21 [00:00<00:03,  5.08configuration/s]Tuning ReLUFloat16Kernel:  10%|▉         | 2/21 [00:00<00:04,  4.22configuration/s]Tuning ReLUFloat16Kernel:  14%|█▍        | 3/21 [00:00<00:04,  3.99configuration/s]Tuning ReLUFloat16Kernel:  19%|█▉        | 4/21 [00:00<00:04,  3.94configuration/s]Tuning ReLUFloat16Kernel:  24%|██▍       | 5/21 [00:01<00:04,  3.92configuration/s]Tuning ReLUFloat16Kernel:  29%|██▊       | 6/21 [00:01<00:03,  3.91configuration/s]Tuning ReLUFloat16Kernel:  33%|███▎      | 7/21 [00:01<00:03,  3.89configuration/s]Tuning ReLUFloat16Kernel:  38%|███▊      | 8/21 [00:02<00:03,  3.88configuration/s]Tuning ReLUFloat16Kernel:  43%|████▎     | 9/21 [00:02<00:03,  3.87configuration/s]Tuning ReLUFloat16Kernel:  48%|████▊     | 10/21 [00:02<00:02,  3.87configuration/s]Tuning ReLUFloat16Kernel:  52%|█████▏    | 11/21 [00:02<00:02,  3.88configuration/s]Tuning ReLUFloat16Kernel:  57%|█████▋    | 12/21 [00:03<00:02,  3.88configuration/s]Tuning ReLUFloat16Kernel:  62%|██████▏   | 13/21 [00:03<00:02,  3.87configuration/s]Tuning ReLUFloat16Kernel:  67%|██████▋   | 14/21 [00:03<00:01,  3.87configuration/s]Tuning ReLUFloat16Kernel:  71%|███████▏  | 15/21 [00:03<00:01,  3.87configuration/s]Tuning ReLUFloat16Kernel:  76%|███████▌  | 16/21 [00:04<00:01,  4.06configuration/s]Tuning ReLUFloat16Kernel:  81%|████████  | 17/21 [00:04<00:01,  3.99configuration/s]Tuning ReLUFloat16Kernel:  86%|████████▌ | 18/21 [00:04<00:00,  3.95configuration/s]Tuning ReLUFloat16Kernel:  90%|█████████ | 19/21 [00:04<00:00,  3.90configuration/s]Tuning ReLUFloat16Kernel:  95%|█████████▌| 20/21 [00:05<00:00,  3.87configuration/s]Tuning ReLUFloat16Kernel: 100%|██████████| 21/21 [00:05<00:00,  3.86configuration/s]Tuning ReLUFloat16Kernel: 100%|██████████| 21/21 [00:05<00:00,  3.92configuration/s]
+ReLUFloat16Kernel best tuning config: {'block_size': 1024, 'num_warps': 4} (0.0099 ms median; 0/21 rejected)
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/helpers/environment.py", line 166, in get_ptx_system_config
+    output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/<user>/taic-exp/.upstream/taic/ptx_gym/triton_src/third_party/nvidia/backend/bin/ptxas'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/scripts/check_candidate.py", line 103, in <module>
+    main()
+  File "/home/<user>/taic-exp/scripts/check_candidate.py", line 74, in main
+    compiled = compile_ptx(payload)
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/evaluation/compilation.py", line 52, in compile_ptx
+    _, target, _ = get_ptx_system_config()
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/helpers/environment.py", line 171, in get_ptx_system_config
+    raise RuntimeError(
+RuntimeError: Unable to determine PTX version from /home/<user>/taic-exp/.upstream/taic/ptx_gym/triton_src/third_party/nvidia/backend/bin/ptxas.
+Exit: 1 2026-10-16T15:14:52Z

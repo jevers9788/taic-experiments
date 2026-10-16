@@ -1,0 +1,22 @@
+gpu,kernel,status,triton_compiles,triton_p50_ms,pytorch_p50_ms,best_stock,best_stock_p50_ms,triton_pct_copy_bw,triton_pct_fp16_mm,source,notes
+L4,SoftmaxFloat16Kernel,not_run,,,,,,,,,no logged run
+L4,RMSNormFloat16Kernel,not_run,,,,,,,,,no logged run
+L4,MatrixMultiplicationFloat16,not_run,,,,,,,,,no logged run
+L4,FlashAttentionNeurIPS2022Forward,not_run,,,,,,,,,no logged run
+L4,SageAttentionICLR2025,not_run,,,,,,,,,no logged run
+L4,BitDeltaNeurIPS2024Matmul,not_run,,,,,,,,,no logged run
+L4,MatrixMultiplicationFloat8Kernel,not_run,,,,,,,,,no logged run
+T4,SoftmaxFloat16Kernel,not_run,,,,,,,,,no logged run
+T4,RMSNormFloat16Kernel,not_run,,,,,,,,,no logged run
+T4,MatrixMultiplicationFloat16,not_run,,,,,,,,,no logged run
+T4,FlashAttentionNeurIPS2022Forward,not_run,,,,,,,,,no logged run
+T4,SageAttentionICLR2025,not_run,,,,,,,,,no logged run
+T4,BitDeltaNeurIPS2024Matmul,not_run,,,,,,,,,no logged run
+T4,MatrixMultiplicationFloat8Kernel,not_run,,,,,,,,,no logged run
+V100,SoftmaxFloat16Kernel,measured,True,0.01229,0.01229,,,41.59,,results/v100/SoftmaxFloat16Kernel.json,
+V100,RMSNormFloat16Kernel,not_run,,,,,,,,,no logged run
+V100,MatrixMultiplicationFloat16,not_run,,,,,,,,,no logged run
+V100,FlashAttentionNeurIPS2022Forward,not_run,,,,,,,,,no logged run
+V100,SageAttentionICLR2025,not_run,,,,,,,,,no logged run
+V100,BitDeltaNeurIPS2024Matmul,not_run,,,,,,,,,no logged run
+V100,MatrixMultiplicationFloat8Kernel,not_run,,,,,,,,,no logged run

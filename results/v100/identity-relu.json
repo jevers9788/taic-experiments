@@ -1,0 +1,88 @@
+{
+  "kernel_name": "ReLUFloat16Kernel",
+  "git_commit_hash": "unknown",
+  "compiles": true,
+  "correct": true,
+  "message": "Compiled, passed correctness, benchmarked successfully",
+  "triton_p20": 0.009216000325977802,
+  "triton_p50": 0.010239999741315842,
+  "triton_p80": 0.010239999741315842,
+  "triton_p90": 0.010239999741315842,
+  "triton_p95": 0.010239999741315842,
+  "triton_p99": 0.011264000087976456,
+  "p20": 0.009216000325977802,
+  "p50": 0.010239999741315842,
+  "p80": 0.010239999741315842,
+  "p90": 0.010239999741315842,
+  "p95": 0.010239999741315842,
+  "p99": 0.011264000087976456,
+  "speedup_vs_triton": 1.0,
+  "compile_output": "Command: /home/<user>/taic-exp/.upstream/taic/ptx_gym/triton_src/third_party/nvidia/backend/bin/ptxas -arch=sm_70 -v --warning-as-error /tmp/triton-ptxas-v0o7_mvy/kernel.ptx -o /tmp/triton-ptxas-v0o7_mvy/kernel.cubin\n\nReturn code: 0\n\nSTDOUT:\n\n\nSTDERR:\nptxas info    : 0 bytes gmem\nptxas info    : Compiling entry function 'kernel' for 'sm_70'\nptxas info    : Function properties for kernel\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 17 registers, used 0 barriers, 384 bytes cmem[0]\nptxas info    : Compile time = 2.604 ms",
+  "compile_error": "",
+  "timing_error": "",
+  "ncu_report": {
+    "available": true,
+    "summary": {},
+    "metrics": {},
+    "error": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/runpy.py\", line 196, in _run_module_as_main\n    return _run_code(code, main_globals, None,\n  File \"/usr/lib/python3.10/runpy.py\", line 86, in _run_code\n    exec(code, run_globals)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/ptx_gym/evaluation/ncu_runner.py\", line 8, in <module>\n    from ptx_gym.evaluation.run_candidate import run_candidate\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/ptx_gym/evaluation/run_candidate.py\", line 8, in <module>\n    from ptx_gym.kernels import resolve_kernel\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/ptx_gym/kernels/__init__.py\", line 39, in <module>\n    from .papers.bitdelta_neurips2024 import (\nModuleNotFoundError: No module named 'ptx_gym.kernels.papers'\n",
+    "return_code": 1,
+    "source_report": ""
+  },
+  "sanitizer_report": {
+    "available": true,
+    "clean": true,
+    "tool": "all",
+    "reports": [
+      {
+        "available": true,
+        "clean": true,
+        "tool": "memcheck",
+        "returncode": 0,
+        "error_count": 0,
+        "diagnostics": [],
+        "ptx_locations": []
+      },
+      {
+        "available": true,
+        "clean": true,
+        "tool": "racecheck",
+        "returncode": 0,
+        "error_count": 0,
+        "diagnostics": [],
+        "ptx_locations": []
+      },
+      {
+        "available": true,
+        "clean": true,
+        "tool": "synccheck",
+        "returncode": 0,
+        "error_count": 0,
+        "diagnostics": [],
+        "ptx_locations": []
+      },
+      {
+        "available": true,
+        "clean": true,
+        "tool": "initcheck",
+        "returncode": 0,
+        "error_count": 0,
+        "diagnostics": [],
+        "ptx_locations": []
+      }
+    ]
+  },
+  "volta_report": {},
+  "verifier_report": {
+    "status": "passed",
+    "seed": 42,
+    "iteration": 999
+  },
+  "passed": true,
+  "command": [
+    "scripts/check_candidate.py",
+    "--identity",
+    "--output",
+    "results/v100/identity-relu.json"
+  ],
+  "fixture": "triton_identity"
+}

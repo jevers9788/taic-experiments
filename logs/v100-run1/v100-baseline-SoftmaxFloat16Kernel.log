@@ -1,0 +1,26 @@
+Command: .venv/bin/python scripts/baselines.py SoftmaxFloat16Kernel --output results/v100/SoftmaxFloat16Kernel.json
+Start: 2026-10-16T15:15:14Z
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/helpers/environment.py", line 166, in get_ptx_system_config
+    output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/<user>/taic-exp/.upstream/taic/ptx_gym/triton_src/third_party/nvidia/backend/bin/ptxas'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/scripts/baselines.py", line 219, in <module>
+    main()
+  File "/home/<user>/taic-exp/scripts/baselines.py", line 143, in main
+    'gpu': torch.cuda.get_device_name(), 'ptx_system': get_ptx_system_config(),
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/helpers/environment.py", line 171, in get_ptx_system_config
+    raise RuntimeError(
+RuntimeError: Unable to determine PTX version from /home/<user>/taic-exp/.upstream/taic/ptx_gym/triton_src/third_party/nvidia/backend/bin/ptxas.
+Exit: 1 2026-10-16T15:15:16Z

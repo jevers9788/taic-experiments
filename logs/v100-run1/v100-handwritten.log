@@ -1,0 +1,13 @@
+Command: .venv/bin/python scripts/check_candidate.py --output results/v100/handwritten-relu.json
+Start: 2026-10-16T15:14:52Z
+Tuning ReLUFloat16Kernel:   0%|          | 0/21 [00:00<?, ?configuration/s]Tuning ReLUFloat16Kernel:   5%|▍         | 1/21 [00:00<00:03,  6.29configuration/s]Tuning ReLUFloat16Kernel:  10%|▉         | 2/21 [00:00<00:03,  5.13configuration/s]Tuning ReLUFloat16Kernel:  14%|█▍        | 3/21 [00:00<00:03,  4.82configuration/s]Tuning ReLUFloat16Kernel:  19%|█▉        | 4/21 [00:00<00:03,  4.73configuration/s]Tuning ReLUFloat16Kernel:  24%|██▍       | 5/21 [00:01<00:03,  4.68configuration/s]Tuning ReLUFloat16Kernel:  29%|██▊       | 6/21 [00:01<00:03,  4.65configuration/s]Tuning ReLUFloat16Kernel:  33%|███▎      | 7/21 [00:01<00:03,  4.63configuration/s]Tuning ReLUFloat16Kernel:  38%|███▊      | 8/21 [00:01<00:02,  4.61configuration/s]Tuning ReLUFloat16Kernel:  43%|████▎     | 9/21 [00:01<00:02,  4.60configuration/s]Tuning ReLUFloat16Kernel:  48%|████▊     | 10/21 [00:02<00:02,  4.59configuration/s]Tuning ReLUFloat16Kernel:  52%|█████▏    | 11/21 [00:02<00:02,  4.59configuration/s]Tuning ReLUFloat16Kernel:  57%|█████▋    | 12/21 [00:02<00:01,  4.59configuration/s]Tuning ReLUFloat16Kernel:  62%|██████▏   | 13/21 [00:02<00:01,  4.58configuration/s]Tuning ReLUFloat16Kernel:  67%|██████▋   | 14/21 [00:03<00:01,  4.58configuration/s]Tuning ReLUFloat16Kernel:  71%|███████▏  | 15/21 [00:03<00:01,  4.57configuration/s]Tuning ReLUFloat16Kernel:  76%|███████▌  | 16/21 [00:03<00:01,  4.59configuration/s]Tuning ReLUFloat16Kernel:  81%|████████  | 17/21 [00:03<00:00,  4.58configuration/s]Tuning ReLUFloat16Kernel:  86%|████████▌ | 18/21 [00:03<00:00,  4.58configuration/s]Tuning ReLUFloat16Kernel:  90%|█████████ | 19/21 [00:04<00:00,  4.58configuration/s]Tuning ReLUFloat16Kernel:  95%|█████████▌| 20/21 [00:04<00:00,  4.57configuration/s]Tuning ReLUFloat16Kernel: 100%|██████████| 21/21 [00:04<00:00,  4.57configuration/s]Tuning ReLUFloat16Kernel: 100%|██████████| 21/21 [00:04<00:00,  4.63configuration/s]
+ReLUFloat16Kernel best tuning config: {'block_size': 1024, 'num_warps': 4} (0.0100 ms median; 0/21 rejected)
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/scripts/check_candidate.py", line 103, in <module>
+    main()
+  File "/home/<user>/taic-exp/scripts/check_candidate.py", line 72, in main
+    source = template if args.identity else handwritten_relu(template, op.block_size, op.num_warps * 32)
+  File "/home/<user>/taic-exp/scripts/check_candidate.py", line 23, in handwritten_relu
+    raise ValueError('Expected input and output pointer arguments')
+ValueError: Expected input and output pointer arguments
+Exit: 1 2026-10-16T15:15:01Z

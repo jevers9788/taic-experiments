@@ -1,0 +1,26 @@
+WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: https://developers.google.com/compute/docs/disks#performance.
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-4 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-west4-b zone. Alternatively, you can try your
+      request again with a different VM hardware configuration or at a later time.
+      For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-4
+      zone: us-west4-b
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/<gcp-project>/zones/us-west4-b' does not have enough resources
+  available to fulfill the request.  Try a different zone, or try again later.
+

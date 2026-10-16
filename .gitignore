@@ -1,0 +1,14 @@
+.upstream/
+.venv/
+.env
+.env.*
+__pycache__/
+*.pyc
+*.ncu-rep
+*.cubin
+
+.cache/
+runs/
+results/*/ptx/
+# TAIC run traces contain upstream prompt text (not ours to redistribute).
+results/**/taic-fixture*/
