@@ -1,0 +1,38 @@
+Hit:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.9ubuntu3).
+gcc-12 is already the newest version (12.3.0-1ubuntu1~22.04.3).
+git is already the newest version (1:2.34.1-1ubuntu1.17).
+linux-headers-6.8.0-1070-gcp is already the newest version (6.8.0-1070.78~22.04.1).
+python3-dev is already the newest version (3.10.6-1~22.04.1).
+g++-12 is already the newest version (12.3.0-1ubuntu1~22.04.3).
+python3-venv is already the newest version (3.10.6-1~22.04.1).
+curl is already the newest version (7.81.0-1ubuntu1.30).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4332  100  4332    0     0  19658      0 --:--:-- --:--:-- --:--:-- 19601
+(Reading database ... 85282 files and directories currently installed.)
+Preparing to unpack /tmp/taic-cuda-keyring.deb ...
+Unpacking cuda-keyring (1.1-1) over (1.1-1) ...
+Setting up cuda-keyring (1.1-1) ...
+Hit:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+cuda-toolkit-12-8 is already the newest version (12.8.2-1).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Error: [Errno 13] Permission denied: '__init__.cpython-310.pyc'
+SETUP_EXIT=1

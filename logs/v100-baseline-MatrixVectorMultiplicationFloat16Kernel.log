@@ -1,0 +1,159 @@
+Command: .venv/bin/python scripts/baselines.py MatrixVectorMultiplicationFloat16Kernel --output results/v100/MatrixVectorMultiplicationFloat16Kernel.json
+Start: 2026-10-16T20:05:02Z
+Tuning MatrixVectorMultiplicationFloat16Kernel:   0%|          | 0/72 [00:00<?, ?configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   1%|▏         | 1/72 [00:00<00:32,  2.17configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   3%|▎         | 2/72 [00:00<00:28,  2.47configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   4%|▍         | 3/72 [00:01<00:27,  2.50configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   6%|▌         | 4/72 [00:01<00:26,  2.54configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   7%|▋         | 5/72 [00:02<00:26,  2.52configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:   8%|▊         | 6/72 [00:02<00:26,  2.49configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  10%|▉         | 7/72 [00:02<00:27,  2.39configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  11%|█         | 8/72 [00:03<00:27,  2.32configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  12%|█▎        | 9/72 [00:03<00:27,  2.26configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  14%|█▍        | 10/72 [00:04<00:30,  2.01configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  15%|█▌        | 11/72 [00:05<00:32,  1.87configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  17%|█▋        | 12/72 [00:05<00:34,  1.75configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  18%|█▊        | 13/72 [00:06<00:43,  1.36configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  19%|█▉        | 14/72 [00:07<00:48,  1.20configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  21%|██        | 15/72 [00:08<00:51,  1.11configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  22%|██▏       | 16/72 [00:10<01:10,  1.25s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  24%|██▎       | 17/72 [00:12<01:19,  1.45s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  25%|██▌       | 18/72 [00:14<01:23,  1.55s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  26%|██▋       | 19/72 [00:15<01:03,  1.19s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  28%|██▊       | 20/72 [00:15<00:49,  1.06configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  29%|██▉       | 21/72 [00:15<00:39,  1.29configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  31%|███       | 22/72 [00:16<00:33,  1.50configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  32%|███▏      | 23/72 [00:16<00:28,  1.69configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  33%|███▎      | 24/72 [00:17<00:25,  1.85configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  35%|███▍      | 25/72 [00:17<00:24,  1.90configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  36%|███▌      | 26/72 [00:18<00:23,  1.96configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  38%|███▊      | 27/72 [00:18<00:22,  1.99configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  39%|███▉      | 28/72 [00:19<00:24,  1.81configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  40%|████      | 29/72 [00:19<00:25,  1.70configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  42%|████▏     | 30/72 [00:20<00:25,  1.63configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  43%|████▎     | 31/72 [00:21<00:29,  1.37configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  44%|████▍     | 32/72 [00:22<00:30,  1.31configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  46%|████▌     | 33/72 [00:23<00:29,  1.30configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  47%|████▋     | 34/72 [00:25<00:46,  1.22s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  49%|████▊     | 35/72 [00:27<00:53,  1.45s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  50%|█████     | 36/72 [00:29<00:56,  1.57s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  51%|█████▏    | 37/72 [00:29<00:42,  1.21s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  53%|█████▎    | 38/72 [00:30<00:32,  1.03configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  54%|█████▍    | 39/72 [00:30<00:26,  1.25configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  56%|█████▌    | 40/72 [00:30<00:22,  1.44configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  57%|█████▋    | 41/72 [00:31<00:19,  1.63configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  58%|█████▊    | 42/72 [00:31<00:16,  1.78configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  60%|█████▉    | 43/72 [00:32<00:16,  1.78configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  61%|██████    | 44/72 [00:32<00:15,  1.82configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  62%|██████▎   | 45/72 [00:33<00:14,  1.86configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  64%|██████▍   | 46/72 [00:33<00:14,  1.77configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  65%|██████▌   | 47/72 [00:34<00:13,  1.86configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  67%|██████▋   | 48/72 [00:34<00:12,  1.96configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  68%|██████▊   | 49/72 [00:36<00:17,  1.29configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  69%|██████▉   | 50/72 [00:37<00:18,  1.17configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  71%|███████   | 51/72 [00:38<00:18,  1.15configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  72%|███████▏  | 52/72 [00:41<00:33,  1.67s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  74%|███████▎  | 53/72 [00:44<00:36,  1.91s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  75%|███████▌  | 54/72 [00:46<00:35,  1.96s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  76%|███████▋  | 55/72 [00:46<00:25,  1.51s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  78%|███████▊  | 56/72 [00:47<00:18,  1.18s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  79%|███████▉  | 57/72 [00:47<00:14,  1.05configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  81%|████████  | 58/72 [00:48<00:11,  1.20configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  82%|████████▏ | 59/72 [00:48<00:09,  1.38configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  83%|████████▎ | 60/72 [00:49<00:07,  1.56configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  85%|████████▍ | 61/72 [00:49<00:06,  1.67configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  86%|████████▌ | 62/72 [00:49<00:05,  1.95configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  88%|████████▊ | 63/72 [00:50<00:03,  2.28configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  89%|████████▉ | 64/72 [00:51<00:04,  1.67configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  90%|█████████ | 65/72 [00:51<00:04,  1.73configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  92%|█████████▏| 66/72 [00:52<00:03,  1.79configuration/s]Tuning MatrixVectorMultiplicationFloat16Kernel:  93%|█████████▎| 67/72 [00:55<00:06,  1.33s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  94%|█████████▍| 68/72 [00:56<00:05,  1.36s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  96%|█████████▌| 69/72 [00:57<00:03,  1.27s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  97%|█████████▋| 70/72 [01:06<00:07,  3.60s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel:  99%|█████████▊| 71/72 [01:10<00:03,  3.76s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel: 100%|██████████| 72/72 [01:13<00:00,  3.51s/configuration]Tuning MatrixVectorMultiplicationFloat16Kernel: 100%|██████████| 72/72 [01:13<00:00,  1.03s/configuration]
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 131072, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 262144, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 524288, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 1048576, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 1048576, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+out of resource: shared memory, Required: 1048576, Hardware limit: 98304. Reducing block sizes or `num_stages` may help.
+MatrixVectorMultiplicationFloat16Kernel best tuning config: {'block_m': 64, 'block_k': 128, 'num_warps': 4} (0.1296 ms median; 30/72 rejected)
+{
+  "command": [
+    "scripts/baselines.py",
+    "MatrixVectorMultiplicationFloat16Kernel",
+    "--output",
+    "results/v100/MatrixVectorMultiplicationFloat16Kernel.json"
+  ],
+  "kernel": "MatrixVectorMultiplicationFloat16Kernel",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 20:05:05 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             41W /  300W |       3MiB /  16384MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.053247999399900436,
+        "p50": 0.05427199974656105,
+        "p80": 0.05427199974656105,
+        "p90": 0.055296000093221664,
+        "p95": 0.055296000093221664,
+        "p99": 0.062463998794555664
+      },
+      "roofline": {
+        "traffic_bytes": 33579008,
+        "achieved_GBps": 618.7169840213551,
+        "pct_of_measured_copy_bw": 74.99592745893446
+      }
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.12902399897575378,
+        "p50": 0.130048006772995,
+        "p80": 0.130048006772995,
+        "p90": 0.130048006772995,
+        "p95": 0.130048006772995,
+        "p99": 0.13251583576202403
+      },
+      "roofline": {
+        "traffic_bytes": 33570816,
+        "achieved_GBps": 258.14171883925496,
+        "pct_of_measured_copy_bw": 31.289875856269077
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float16 tensor with shape (4096, 4096)\n- x_ptr: float16 tensor with shape (4096,)\n- y_ptr: float16 tensor with shape (4096,)",
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.3650534135486,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_m": 64,
+      "block_k": 128,
+      "num_warps": 4
+    },
+    "latency_ms": 0.12961579539946147,
+    "evaluated_configurations": 72,
+    "rejected_configurations": 30
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "4a162def8e5cc825ec2df47df8c35a035bcb14d5ee479c798e1df1392f8397e1",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "3",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "32768",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}
+Exit: 0 2026-10-16T20:06:26Z

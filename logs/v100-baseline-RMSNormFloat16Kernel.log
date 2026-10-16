@@ -1,0 +1,203 @@
+Command: .venv/bin/python scripts/baselines.py RMSNormFloat16Kernel --output results/v100/RMSNormFloat16Kernel.json
+Start: 2026-10-16T19:32:56Z
+Tuning RMSNormFloat16Kernel:   0%|          | 0/18 [00:00<?, ?configuration/s]Tuning RMSNormFloat16Kernel:   6%|▌         | 1/18 [00:02<00:46,  2.72s/configuration]Tuning RMSNormFloat16Kernel:  11%|█         | 2/18 [00:02<00:18,  1.18s/configuration]Tuning RMSNormFloat16Kernel:  17%|█▋        | 3/18 [00:02<00:10,  1.44configuration/s]Tuning RMSNormFloat16Kernel:  22%|██▏       | 4/18 [00:03<00:06,  2.16configuration/s]Tuning RMSNormFloat16Kernel:  28%|██▊       | 5/18 [00:03<00:04,  2.97configuration/s]Tuning RMSNormFloat16Kernel:  33%|███▎      | 6/18 [00:03<00:03,  3.78configuration/s]Tuning RMSNormFloat16Kernel:  39%|███▉      | 7/18 [00:03<00:02,  4.64configuration/s]Tuning RMSNormFloat16Kernel:  44%|████▍     | 8/18 [00:03<00:01,  5.49configuration/s]Tuning RMSNormFloat16Kernel:  50%|█████     | 9/18 [00:03<00:01,  6.34configuration/s]Tuning RMSNormFloat16Kernel:  56%|█████▌    | 10/18 [00:03<00:01,  6.92configuration/s]Tuning RMSNormFloat16Kernel:  61%|██████    | 11/18 [00:03<00:00,  7.52configuration/s]Tuning RMSNormFloat16Kernel:  67%|██████▋   | 12/18 [00:03<00:00,  7.95configuration/s]Tuning RMSNormFloat16Kernel:  72%|███████▏  | 13/18 [00:04<00:00,  8.08configuration/s]Tuning RMSNormFloat16Kernel:  78%|███████▊  | 14/18 [00:04<00:00,  8.26configuration/s]Tuning RMSNormFloat16Kernel:  83%|████████▎ | 15/18 [00:04<00:00,  8.39configuration/s]Tuning RMSNormFloat16Kernel:  89%|████████▉ | 16/18 [00:04<00:00,  5.24configuration/s]Tuning RMSNormFloat16Kernel:  94%|█████████▍| 17/18 [00:04<00:00,  4.95configuration/s]Tuning RMSNormFloat16Kernel: 100%|██████████| 18/18 [00:05<00:00,  4.15configuration/s]Tuning RMSNormFloat16Kernel: 100%|██████████| 18/18 [00:05<00:00,  3.45configuration/s]
+Tensor-likes are not close!
+
+Mismatched elements: 26723 / 1048576 (2.5%)
+Greatest absolute difference: 0.271484375 at index (3, 2803) (up to 0.001 allowed)
+Greatest relative difference: 0.1673583984375 at index (3, 2697) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 26723 / 1048576 (2.5%)
+Greatest absolute difference: 0.271484375 at index (3, 2803) (up to 0.001 allowed)
+Greatest relative difference: 0.1673583984375 at index (3, 2697) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 26723 / 1048576 (2.5%)
+Greatest absolute difference: 0.271484375 at index (3, 2803) (up to 0.001 allowed)
+Greatest relative difference: 0.1673583984375 at index (3, 2697) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 48512 / 1048576 (4.6%)
+Greatest absolute difference: 0.125 at index (11, 2694) (up to 0.001 allowed)
+Greatest relative difference: 0.0784912109375 at index (9, 69) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 48512 / 1048576 (4.6%)
+Greatest absolute difference: 0.125 at index (11, 2694) (up to 0.001 allowed)
+Greatest relative difference: 0.0784912109375 at index (9, 69) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 48512 / 1048576 (4.6%)
+Greatest absolute difference: 0.125 at index (11, 2694) (up to 0.001 allowed)
+Greatest relative difference: 0.0784912109375 at index (9, 69) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 87986 / 1048576 (8.4%)
+Greatest absolute difference: 0.0888671875 at index (5, 1785) (up to 0.001 allowed)
+Greatest relative difference: 0.05596923828125 at index (4, 373) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 87986 / 1048576 (8.4%)
+Greatest absolute difference: 0.0888671875 at index (5, 1785) (up to 0.001 allowed)
+Greatest relative difference: 0.05596923828125 at index (4, 373) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 87986 / 1048576 (8.4%)
+Greatest absolute difference: 0.0888671875 at index (5, 1785) (up to 0.001 allowed)
+Greatest relative difference: 0.05596923828125 at index (4, 373) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 149155 / 1048576 (14.2%)
+Greatest absolute difference: 0.0634765625 at index (8, 582) (up to 0.001 allowed)
+Greatest relative difference: 0.041107177734375 at index (8, 710) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 149155 / 1048576 (14.2%)
+Greatest absolute difference: 0.0634765625 at index (8, 582) (up to 0.001 allowed)
+Greatest relative difference: 0.041107177734375 at index (8, 710) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 149155 / 1048576 (14.2%)
+Greatest absolute difference: 0.0634765625 at index (8, 582) (up to 0.001 allowed)
+Greatest relative difference: 0.041107177734375 at index (8, 710) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 228615 / 1048576 (21.8%)
+Greatest absolute difference: 0.03125 at index (121, 2117) (up to 0.001 allowed)
+Greatest relative difference: 0.01971435546875 at index (121, 3662) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 228615 / 1048576 (21.8%)
+Greatest absolute difference: 0.03125 at index (121, 2117) (up to 0.001 allowed)
+Greatest relative difference: 0.01971435546875 at index (121, 3662) (up to 0.001 allowed)
+Tensor-likes are not close!
+
+Mismatched elements: 228614 / 1048576 (21.8%)
+Greatest absolute difference: 0.03125 at index (121, 2117) (up to 0.001 allowed)
+Greatest relative difference: 0.01971435546875 at index (121, 3662) (up to 0.001 allowed)
+RMSNormFloat16Kernel best tuning config: {'block_size': 4096, 'num_warps': 16} (0.0135 ms median; 15/18 rejected)
+{
+  "command": [
+    "scripts/baselines.py",
+    "RMSNormFloat16Kernel",
+    "--output",
+    "results/v100/RMSNormFloat16Kernel.json"
+  ],
+  "kernel": "RMSNormFloat16Kernel",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 19:33:21 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   38C    P0             40W /  300W |       3MiB /  16384MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.03379200026392937,
+        "p50": 0.03481600061058998,
+        "p80": 0.035840000957250595,
+        "p90": 0.035840000957250595,
+        "p95": 0.035840000957250595,
+        "p99": 0.03686400130391121
+      },
+      "roofline": {
+        "traffic_bytes": 6291456,
+        "achieved_GBps": 180.70587918378908,
+        "pct_of_measured_copy_bw": 21.92095589710469
+      }
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.013311999849975109,
+        "p50": 0.013311999849975109,
+        "p80": 0.013311999849975109,
+        "p90": 0.014336000196635723,
+        "p95": 0.014336000196635723,
+        "p99": 0.014336000196635723
+      },
+      "roofline": {
+        "traffic_bytes": 6291456,
+        "achieved_GBps": 472.6153899417121,
+        "pct_of_measured_copy_bw": 57.33173245939752
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- x_ptr: float16 tensor with shape (256, 4096)\n- weight_ptr: float16 tensor with shape (256, 4096)\n- output_ptr: float16 tensor with shape (256, 4096)",
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 97.3650534135486,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_size": 4096,
+      "num_warps": 16
+    },
+    "latency_ms": 0.013492705829038814,
+    "evaluated_configurations": 18,
+    "rejected_configurations": 15
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "66147527b092a96bc734047bdb840f21969b5f59fe3b75fd7a4d03d6b00c21fc",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "3",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "16",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "64",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}
+Exit: 0 2026-10-16T19:33:49Z

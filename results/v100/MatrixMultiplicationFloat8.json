@@ -1,0 +1,86 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "MatrixMultiplicationFloat8",
+    "--output",
+    "results/v100/MatrixMultiplicationFloat8.json"
+  ],
+  "kernel": "MatrixMultiplicationFloat8",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 20:00:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   39C    P0             40W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 9.578495979309082,
+        "p50": 9.579520225524902,
+        "p80": 9.581567764282227,
+        "p90": 9.585356903076171,
+        "p95": 9.61146855354309,
+        "p99": 9.624094667434694
+      },
+      "roofline": {
+        "traffic_bytes": 100663296,
+        "achieved_GBps": 10.50817719782874,
+        "pct_of_measured_copy_bw": 1.274719394593053,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 14.347164600768838,
+        "pct_of_measured_fp16_mm": 14.75681455829875
+      }
+    },
+    "torch_upcast_fp16_mm": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 2.013184070587158,
+        "p50": 2.061311960220337,
+        "p80": 2.0725760459899902,
+        "p90": 2.1186559200286865,
+        "p95": 2.120703935623169,
+        "p99": 2.122547149658203
+      },
+      "roofline": {
+        "traffic_bytes": 100663296,
+        "achieved_GBps": 48.83457620322542,
+        "pct_of_measured_copy_bw": 5.923994260950066,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 66.67547470947044,
+        "pct_of_measured_fp16_mm": 68.57923800647461
+      }
+    },
+    "torch_scaled_mm_fp8": {
+      "correct": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 202, in main\n    compare(fn(x), expected, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 190, in <lambda>\n    functions['torch_scaled_mm_fp8'] = lambda x: torch._scaled_mm(\nRuntimeError: torch._scaled_mm is only supported on CUDA devices with compute capability >= 9.0 or 8.9, or ROCm MI300+\n"
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float8_e4m3fn tensor with shape (4096, 4096)\n- b_ptr: float8_e4m3fn tensor with shape (4096, 4096)\n- c_ptr: float16 tensor with shape (4096, 4096)",
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 97.22399467777049,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune_error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 158, in main\n    tuning_result = op.autotune()\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/base.py\", line 93, in autotune\n    reference, _ = self.forward_triton(inputs)\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/common/matrix_multiplication.py\", line 229, in forward_triton\n    kernel = launch_kernel[grid](\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 370, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 720, in run\n    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 851, in _do_compile\n    kernel = self.compile(src, target=target, options=options.__dict__, ptx=self.ptx)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 304, in compile\n    module = src.make_ir(target, options, codegen_fns, module_map, context)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 80, in make_ir\n    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,\ntriton.compiler.errors.CompilationError: at 1:0:\ndef kernel(\n^\nValueError(\"type fp8e4nv not supported in this architecture. The supported fp8 dtypes are ('fp8e4b15', 'fp8e5')\")\n"
+}

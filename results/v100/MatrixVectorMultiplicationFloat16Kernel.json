@@ -1,0 +1,124 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "MatrixVectorMultiplicationFloat16Kernel",
+    "--output",
+    "results/v100/MatrixVectorMultiplicationFloat16Kernel.json"
+  ],
+  "kernel": "MatrixVectorMultiplicationFloat16Kernel",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 20:05:05 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             41W /  300W |       3MiB /  16384MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.053247999399900436,
+        "p50": 0.05427199974656105,
+        "p80": 0.05427199974656105,
+        "p90": 0.055296000093221664,
+        "p95": 0.055296000093221664,
+        "p99": 0.062463998794555664
+      },
+      "roofline": {
+        "traffic_bytes": 33579008,
+        "achieved_GBps": 618.7169840213551,
+        "pct_of_measured_copy_bw": 74.99592745893446
+      }
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.12902399897575378,
+        "p50": 0.130048006772995,
+        "p80": 0.130048006772995,
+        "p90": 0.130048006772995,
+        "p95": 0.130048006772995,
+        "p99": 0.13251583576202403
+      },
+      "roofline": {
+        "traffic_bytes": 33570816,
+        "achieved_GBps": 258.14171883925496,
+        "pct_of_measured_copy_bw": 31.289875856269077
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float16 tensor with shape (4096, 4096)\n- x_ptr: float16 tensor with shape (4096,)\n- y_ptr: float16 tensor with shape (4096,)",
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.3650534135486,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_m": 64,
+      "block_k": 128,
+      "num_warps": 4
+    },
+    "latency_ms": 0.12961579539946147,
+    "evaluated_configurations": 72,
+    "rejected_configurations": 30
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "4a162def8e5cc825ec2df47df8c35a035bcb14d5ee479c798e1df1392f8397e1",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "3",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "32768",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}

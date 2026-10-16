@@ -1,0 +1,135 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "FlashAttentionNeurIPS2022Forward",
+    "--output",
+    "results/v100/FlashAttentionNeurIPS2022Forward.json"
+  ],
+  "kernel": "FlashAttentionNeurIPS2022Forward",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 19:33:51 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   38C    P0             40W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 202, in main\n    compare(fn(x), expected, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 109, in compare\n    compare(a, e, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 111, in compare\n    torch.testing.assert_close(actual, expected, rtol=tolerance,\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/torch/testing/_comparison.py\", line 1600, in assert_close\n    raise error_metas[0].to_error(msg)\nAssertionError: Tensor-likes are not close!\n\nMismatched elements: 29668835 / 33554432 (88.4%)\nGreatest absolute difference: 4.51171875 at index (62, 40, 0, 58) (up to 0.01 allowed)\nGreatest relative difference: inf at index (0, 24, 38, 40) (up to 0.01 allowed)\n"
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 3.6536319255828857,
+        "p50": 3.654655933380127,
+        "p80": 3.6577279567718506,
+        "p90": 3.6684800386428833,
+        "p95": 3.668992042541504,
+        "p99": 3.6710400581359863
+      },
+      "roofline": {
+        "traffic_bytes": 270532608,
+        "achieved_GBps": 74.0240977349102,
+        "pct_of_measured_copy_bw": 8.979669001912045,
+        "flops": 17179869184,
+        "achieved_TFLOPs": 4.700817121274298,
+        "pct_of_measured_fp16_mm": 4.844231550568612
+      }
+    },
+    "torch_sdpa_output_only": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.7598080039024353,
+        "p50": 0.7618560194969177,
+        "p80": 0.7649279832839966,
+        "p90": 0.7659519910812378,
+        "p95": 0.766975998878479,
+        "p99": 0.7700480222702026
+      },
+      "roofline": {
+        "traffic_bytes": 268435456,
+        "achieved_GBps": 352.3440770045475,
+        "pct_of_measured_copy_bw": 42.74193516840282,
+        "flops": 17179869184,
+        "achieved_TFLOPs": 22.550020928291037,
+        "pct_of_measured_fp16_mm": 23.237986083831704
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- q/k/v/output: [B, H, T, D]; lse: [B, H, T]",
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 97.03948030152522,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_m": 32,
+      "block_n": 32,
+      "num_warps": 4,
+      "num_stages": 2
+    },
+    "latency_ms": 3.6547173738479612,
+    "evaluated_configurations": 54,
+    "rejected_configurations": 0
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "8c1e5aacde2c617835c86dfeaa6dbffe16b4e419275e0e58491976d2170c3990",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "2",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "16384",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}

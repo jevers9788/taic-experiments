@@ -1,0 +1,57 @@
+Command: .venv/bin/python scripts/baselines.py SageAttentionICLR2025 --output results/v100/SageAttentionICLR2025.json
+Start: 2026-10-16T17:02:33Z
+{
+  "command": [
+    "scripts/baselines.py",
+    "SageAttentionICLR2025",
+    "--output",
+    "results/v100/SageAttentionICLR2025.json"
+  ],
+  "kernel": "SageAttentionICLR2025",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 17:02:36 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   39C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 2.2466559410095215,
+        "p50": 2.248703956604004,
+        "p80": 2.2517759799957275,
+        "p90": 2.2527999877929688,
+        "p95": 2.2532095909118652,
+        "p99": 2.2600499629974364
+      },
+      "roofline": {
+        "traffic_bytes": 51126528,
+        "achieved_GBps": 22.735997706523968,
+        "pct_of_measured_copy_bw": 2.755875915386411,
+        "flops": 8589934592,
+        "achieved_TFLOPs": 3.819949071896744,
+        "pct_of_measured_fp16_mm": 3.92314871008004
+      }
+    }
+  },
+  "seed": 42,
+  "shape": "- query_ptr: int8 tensor with shape (16, 16, 1024, 64)\n- key_ptr: int8 tensor with shape (16, 2, 128, 64)\n- value_ptr/output_ptr: float16 tensors with HND layout\n- query_scale_ptr/key_scale_ptr: float32 scales per Q/K block",
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.3694691226428,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune_error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 155, in main\n    tuning_result = op.autotune()\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/base.py\", line 93, in autotune\n    reference, _ = self.forward_triton(inputs)\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/papers/sageattention_iclr2025.py\", line 228, in forward_triton\n    kernel = launch_kernel[\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 370, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 720, in run\n    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 851, in _do_compile\n    kernel = self.compile(src, target=target, options=options.__dict__, ptx=self.ptx)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 248, in compile\n    fn_cache_manager = get_cache_manager(hash)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/cache.py\", line 257, in get_cache_manager\n    return cls(_base32(key))\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/cache.py\", line 56, in __init__\n    os.makedirs(self.cache_dir, exist_ok=True)\n  File \"/usr/lib/python3.10/os.py\", line 225, in makedirs\n    mkdir(name, mode)\nPermissionError: [Errno 13] Permission denied: '/home/<user>/taic-exp/.cache/triton/ZOIKZB2YIAH4NRQLYBZD742TSC6QUWSB2QID525MUQDIQCSJV6BQ'\n"
+}
+Exit: 0 2026-10-16T17:02:41Z

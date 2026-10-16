@@ -17,12 +17,12 @@ T4,BitDeltaNeurIPS2024Matmul,not_run,,,,,,,,,no logged run
 T4,MatrixMultiplicationFloat8,not_run,,,,,,,,,no logged run
 T4,MatrixVectorMultiplicationFloat16Kernel,not_run,,,,,,,,,no logged run
 T4,MatrixVectorMultiplicationFloat8Kernel,not_run,,,,,,,,,no logged run
-V100,SoftmaxFloat16Kernel,measured,True,0.01229,0.01229,,,41.59,,results/v100/SoftmaxFloat16Kernel.json,
-V100,RMSNormFloat16Kernel,not_run,,,,,,,,,no logged run
-V100,MatrixMultiplicationFloat16,not_run,,,,,,,,,no logged run
-V100,FlashAttentionNeurIPS2022Forward,not_run,,,,,,,,,no logged run
-V100,SageAttentionICLR2025,not_run,,,,,,,,,no logged run
-V100,BitDeltaNeurIPS2024Matmul,not_run,,,,,,,,,no logged run
-V100,MatrixMultiplicationFloat8,not_run,,,,,,,,,no logged run
-V100,MatrixVectorMultiplicationFloat16Kernel,not_run,,,,,,,,,no logged run
-V100,MatrixVectorMultiplicationFloat8Kernel,not_run,,,,,,,,,no logged run
+V100,SoftmaxFloat16Kernel,measured,True,0.01229,0.01229,,,41.37,,results/v100/SoftmaxFloat16Kernel.json,
+V100,RMSNormFloat16Kernel,measured,True,0.01331,0.03482,,,57.33,,results/v100/RMSNormFloat16Kernel.json,
+V100,MatrixMultiplicationFloat16,measured,True,13.44,1.94,torch_mm_cublas,1.923,0.9078,10.52,results/v100/MatrixMultiplicationFloat16.json,
+V100,FlashAttentionNeurIPS2022Forward,measured,True,3.655,,torch_sdpa_output_only,0.7619,8.98,4.844,results/v100/FlashAttentionNeurIPS2022Forward.json,pytorch_eager failed
+V100,SageAttentionICLR2025,triton_failed,False,,2.251,,,,,results/v100/SageAttentionICLR2025.json,Triton failed: RuntimeError: PassManager::run failed
+V100,BitDeltaNeurIPS2024Matmul,measured,True,12.67,2.994,,,0.6627,11.14,results/v100/BitDeltaNeurIPS2024Matmul.json,
+V100,MatrixMultiplicationFloat8,triton_failed,False,,9.58,torch_upcast_fp16_mm,2.061,,,results/v100/MatrixMultiplicationFloat8.json,"Triton failed: ValueError(""type fp8e4nv not supported in this architecture. The supported fp8 dtypes are ('fp8e4b15', 'fp8e5')""); torch_scaled_mm_fp8 failed"
+V100,MatrixVectorMultiplicationFloat16Kernel,measured,True,0.13,0.05427,,,31.29,,results/v100/MatrixVectorMultiplicationFloat16Kernel.json,
+V100,MatrixVectorMultiplicationFloat8Kernel,triton_failed,False,,0.2232,torch_upcast_fp16_mv,0.1782,,,results/v100/MatrixVectorMultiplicationFloat8Kernel.json,"Triton failed: ValueError(""type fp8e4nv not supported in this architecture. The supported fp8 dtypes are ('fp8e4b15', 'fp8e5')"")"

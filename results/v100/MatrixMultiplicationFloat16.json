@@ -1,0 +1,155 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "MatrixMultiplicationFloat16",
+    "--output",
+    "results/v100/MatrixMultiplicationFloat16.json"
+  ],
+  "kernel": "MatrixMultiplicationFloat16",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 17:08:25 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 1.8923519849777222,
+        "p50": 1.9399679899215698,
+        "p80": 1.9548159837722778,
+        "p90": 1.9640320539474487,
+        "p95": 1.9822079539299011,
+        "p99": 1.995458587408066
+      },
+      "roofline": {
+        "traffic_bytes": 134217728,
+        "achieved_GBps": 69.18553744045346,
+        "pct_of_measured_copy_bw": 8.386117855320673,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 70.84599033902434,
+        "pct_of_measured_fp16_mm": 72.89192252177772
+      }
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 13.4395902633667,
+        "p50": 13.441023826599121,
+        "p80": 13.444095611572266,
+        "p90": 13.447168350219727,
+        "p95": 13.476454639434815,
+        "p99": 13.512079410552978
+      },
+      "roofline": {
+        "traffic_bytes": 100663296,
+        "achieved_GBps": 7.489258057916118,
+        "pct_of_measured_copy_bw": 0.9077880008759087,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 10.22533366840814,
+        "pct_of_measured_fp16_mm": 10.52062686893334
+      }
+    },
+    "torch_mm_cublas": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 1.8728959560394287,
+        "p50": 1.9230719804763794,
+        "p80": 1.9509247541427612,
+        "p90": 1.9640320539474487,
+        "p95": 1.9752959847450255,
+        "p99": 2.0452557563781735
+      },
+      "roofline": {
+        "traffic_bytes": 100663296,
+        "achieved_GBps": 52.34504845474578,
+        "pct_of_measured_copy_bw": 6.344848384848974,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 71.46843949021289,
+        "pct_of_measured_fp16_mm": 73.5323471256976
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float16 tensor with shape (4096, 4096)\n- b_ptr: float16 tensor with shape (4096, 4096)\n- c_ptr: float16 tensor with shape (4096, 4096)",
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.19319766584272,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_m": 32,
+      "block_n": 64,
+      "block_k": 32,
+      "num_warps": 4
+    },
+    "latency_ms": 13.455579485212054,
+    "evaluated_configurations": 192,
+    "rejected_configurations": 57
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "9a98648cb8e500d2873fb9e547cb8375d2b932c770c98c206830b3d3dc78fa1e",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "3",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "8192",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}

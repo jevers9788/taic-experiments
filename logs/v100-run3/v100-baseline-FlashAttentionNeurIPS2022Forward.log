@@ -1,0 +1,61 @@
+Command: .venv/bin/python scripts/baselines.py FlashAttentionNeurIPS2022Forward --output results/v100/FlashAttentionNeurIPS2022Forward.json
+Start: 2026-10-16T17:02:25Z
+{
+  "command": [
+    "scripts/baselines.py",
+    "FlashAttentionNeurIPS2022Forward",
+    "--output",
+    "results/v100/FlashAttentionNeurIPS2022Forward.json"
+  ],
+  "kernel": "FlashAttentionNeurIPS2022Forward",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 17:02:27 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   39C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 199, in main\n    compare(fn(x), expected, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 109, in compare\n    compare(a, e, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 111, in compare\n    torch.testing.assert_close(actual, expected, rtol=tolerance,\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/torch/testing/_comparison.py\", line 1600, in assert_close\n    raise error_metas[0].to_error(msg)\nAssertionError: Tensor-likes are not close!\n\nMismatched elements: 29667939 / 33554432 (88.4%)\nGreatest absolute difference: 4.37890625 at index (1, 63, 0, 12) (up to 0.01 allowed)\nGreatest relative difference: inf at index (0, 3, 18, 27) (up to 0.01 allowed)\n"
+    },
+    "torch_sdpa_output_only": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.7639039754867554,
+        "p50": 0.7659519910812378,
+        "p80": 0.7690240144729614,
+        "p90": 0.7700480222702026,
+        "p95": 0.7710719704627991,
+        "p99": 0.7748505592346191
+      },
+      "roofline": {
+        "traffic_bytes": 268435456,
+        "achieved_GBps": 350.4598971288912,
+        "pct_of_measured_copy_bw": 42.47994753839955,
+        "flops": 17179869184,
+        "achieved_TFLOPs": 22.42943341624904,
+        "pct_of_measured_fp16_mm": 23.035386367361003
+      }
+    }
+  },
+  "seed": 42,
+  "shape": "- q/k/v/output: [B, H, T, D]; lse: [B, H, T]",
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.3694691226428,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune_error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 155, in main\n    tuning_result = op.autotune()\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/base.py\", line 93, in autotune\n    reference, _ = self.forward_triton(inputs)\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/papers/flash_attention_neurips2022.py\", line 214, in forward_triton\n    compiled = launch[\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 370, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 720, in run\n    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 851, in _do_compile\n    kernel = self.compile(src, target=target, options=options.__dict__, ptx=self.ptx)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 248, in compile\n    fn_cache_manager = get_cache_manager(hash)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/cache.py\", line 257, in get_cache_manager\n    return cls(_base32(key))\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/cache.py\", line 56, in __init__\n    os.makedirs(self.cache_dir, exist_ok=True)\n  File \"/usr/lib/python3.10/os.py\", line 225, in makedirs\n    mkdir(name, mode)\nPermissionError: [Errno 13] Permission denied: '/home/<user>/taic-exp/.cache/triton/OKGVXK45CGZSID2PQIU7F547O37KNAJCIBNJRP3XBPFEJVNN2NLA'\n"
+}
+Exit: 0 2026-10-16T17:02:33Z

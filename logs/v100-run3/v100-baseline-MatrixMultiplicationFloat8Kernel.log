@@ -1,0 +1,11 @@
+Command: .venv/bin/python scripts/baselines.py MatrixMultiplicationFloat8Kernel --output results/v100/MatrixMultiplicationFloat8Kernel.json
+Start: 2026-10-16T17:02:48Z
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/scripts/baselines.py", line 219, in <module>
+    main()
+  File "/home/<user>/taic-exp/scripts/baselines.py", line 146, in main
+    cls = resolve_kernel(args.kernel)
+  File "/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/__init__.py", line 90, in resolve_kernel
+    raise ValueError(f"Unknown kernel {name!r}. Available kernels: {available}")
+ValueError: Unknown kernel 'MatrixMultiplicationFloat8Kernel'. Available kernels: AddFloat16Kernel, AddFloat8Kernel, AdversialFlashAttentionKernel, AdversialMatrixMultiplicationKernel, AdversialReLUKernel, BitDeltaNeurIPS2024BatchedMatmul, BitDeltaNeurIPS2024Matmul, ChanMixICLR2026GetCache, ChanMixICLR2026SetCache, Convolution2DFloat16Kernel, Convolution2DFloat8Kernel, Dion2TritonPostOrthogonalize, FlashAttentionNeurIPS2022Backward, FlashAttentionNeurIPS2022Forward, FlashSinkhornFusedSchurMatvec, ForgettingAttentionICLR2025Backward, ForgettingAttentionICLR2025Forward, FusedGEMMAddGELUFloat16Kernel, FusedGEMMAddGELUFloat8Kernel, FusedGEMMAddSiLUFloat16Kernel, FusedGEMMAddSiLUFloat8Kernel, GELUFloat16Kernel, GELUFloat8Kernel, HouseholderDiagonalizedLinearAttentionICLR2026Backward, HouseholderDiagonalizedLinearAttentionICLR2026Forward, LionNeurIPS2023Optimizer, Mamba2ChunkScanForward, Mamba2ChunkStateForward, MambaICLR2026Forward, MambaICLR2026Step, MatrixMultiplicationFloat16, MatrixMultiplicationFloat32, MatrixMultiplicationFloat8, MatrixVectorMultiplicationFloat16Kernel, MatrixVectorMultiplicationFloat8Kernel, RMSNormFloat16Kernel, RMSNormFloat8Kernel, RandomKernel1, RandomKernel2, RandomKernel3, RandomKernel4, RandomKernel5, ReLUFloat16Kernel, ReLUFloat8Kernel, ReductionSumFloat16Kernel, ReductionSumFloat8Kernel, RoPEFloat16Kernel, RoPEFloat8Kernel, SageAttentionICLR2025, SiLUFloat16Kernel, SiLUFloat8Kernel, SigmoidFloat16Kernel, SigmoidFloat8Kernel, SoftmaxFloat16Kernel, SoftmaxFloat8Kernel, SwiGLUFloat16Kernel, SwiGLUFloat8Kernel
+Exit: 1 2026-10-16T17:02:51Z

@@ -1,0 +1,140 @@
+Command: .venv/bin/python scripts/baselines.py FlashAttentionNeurIPS2022Forward --output results/v100/FlashAttentionNeurIPS2022Forward.json
+Start: 2026-10-16T19:33:49Z
+Tuning FlashAttentionNeurIPS2022Forward:   0%|          | 0/54 [00:00<?, ?configuration/s]Tuning FlashAttentionNeurIPS2022Forward:   2%|▏         | 1/54 [00:00<00:44,  1.20configuration/s]Tuning FlashAttentionNeurIPS2022Forward:   4%|▎         | 2/54 [00:01<00:41,  1.27configuration/s]Tuning FlashAttentionNeurIPS2022Forward:   6%|▌         | 3/54 [00:02<00:39,  1.28configuration/s]Tuning FlashAttentionNeurIPS2022Forward:   7%|▋         | 4/54 [00:03<00:37,  1.32configuration/s]Tuning FlashAttentionNeurIPS2022Forward:   9%|▉         | 5/54 [00:03<00:36,  1.35configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  11%|█         | 6/54 [00:04<00:35,  1.35configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  13%|█▎        | 7/54 [00:05<00:37,  1.27configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  15%|█▍        | 8/54 [00:06<00:37,  1.22configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  17%|█▋        | 9/54 [00:07<00:38,  1.18configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  19%|█▊        | 10/54 [00:08<00:36,  1.20configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  20%|██        | 11/54 [00:08<00:35,  1.22configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  22%|██▏       | 12/54 [00:09<00:34,  1.23configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  24%|██▍       | 13/54 [00:10<00:38,  1.07configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  26%|██▌       | 14/54 [00:12<00:41,  1.03s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  28%|██▊       | 15/54 [00:13<00:42,  1.10s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  30%|██▉       | 16/54 [00:14<00:40,  1.05s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  31%|███▏      | 17/54 [00:15<00:37,  1.02s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  33%|███▎      | 18/54 [00:16<00:36,  1.00s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  35%|███▌      | 19/54 [00:17<00:33,  1.04configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  37%|███▋      | 20/54 [00:17<00:32,  1.05configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  39%|███▉      | 21/54 [00:18<00:30,  1.08configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  41%|████      | 22/54 [00:19<00:29,  1.09configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  43%|████▎     | 23/54 [00:20<00:27,  1.13configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  44%|████▍     | 24/54 [00:21<00:25,  1.16configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  46%|████▋     | 25/54 [00:22<00:28,  1.03configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  48%|████▊     | 26/54 [00:22<00:21,  1.29configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  50%|█████     | 27/54 [00:24<00:24,  1.12configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  52%|█████▏    | 28/54 [00:25<00:23,  1.11configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  54%|█████▎    | 29/54 [00:25<00:22,  1.09configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  56%|█████▌    | 30/54 [00:26<00:21,  1.09configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  57%|█████▋    | 31/54 [00:28<00:25,  1.11s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  59%|█████▉    | 32/54 [00:29<00:27,  1.24s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  61%|██████    | 33/54 [00:31<00:28,  1.34s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  63%|██████▎   | 34/54 [00:32<00:26,  1.30s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  65%|██████▍   | 35/54 [00:33<00:24,  1.27s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  67%|██████▋   | 36/54 [00:35<00:22,  1.25s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  69%|██████▊   | 37/54 [00:36<00:20,  1.22s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  70%|███████   | 38/54 [00:37<00:18,  1.19s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  72%|███████▏  | 39/54 [00:38<00:17,  1.17s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  74%|███████▍  | 40/54 [00:39<00:15,  1.08s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  76%|███████▌  | 41/54 [00:40<00:13,  1.02s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  78%|███████▊  | 42/54 [00:41<00:11,  1.02configuration/s]Tuning FlashAttentionNeurIPS2022Forward:  80%|███████▉  | 43/54 [00:42<00:12,  1.15s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  81%|████████▏ | 44/54 [00:44<00:12,  1.26s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  83%|████████▎ | 45/54 [00:45<00:12,  1.35s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  85%|████████▌ | 46/54 [00:46<00:10,  1.27s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  87%|████████▋ | 47/54 [00:48<00:08,  1.23s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  89%|████████▉ | 48/54 [00:49<00:07,  1.20s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  91%|█████████ | 49/54 [00:52<00:08,  1.71s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  93%|█████████▎| 50/54 [00:54<00:08,  2.06s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  94%|█████████▍| 51/54 [00:58<00:07,  2.45s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  96%|█████████▋| 52/54 [00:59<00:04,  2.21s/configuration]Tuning FlashAttentionNeurIPS2022Forward:  98%|█████████▊| 53/54 [01:01<00:02,  2.04s/configuration]Tuning FlashAttentionNeurIPS2022Forward: 100%|██████████| 54/54 [01:03<00:00,  1.93s/configuration]Tuning FlashAttentionNeurIPS2022Forward: 100%|██████████| 54/54 [01:03<00:00,  1.17s/configuration]
+FlashAttentionNeurIPS2022Forward best tuning config: {'block_m': 32, 'block_n': 32, 'num_warps': 4, 'num_stages': 2} (3.6547 ms median; 0/54 rejected)
+{
+  "command": [
+    "scripts/baselines.py",
+    "FlashAttentionNeurIPS2022Forward",
+    "--output",
+    "results/v100/FlashAttentionNeurIPS2022Forward.json"
+  ],
+  "kernel": "FlashAttentionNeurIPS2022Forward",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 19:33:51 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   38C    P0             40W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 202, in main\n    compare(fn(x), expected, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 109, in compare\n    compare(a, e, tolerance)\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 111, in compare\n    torch.testing.assert_close(actual, expected, rtol=tolerance,\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/torch/testing/_comparison.py\", line 1600, in assert_close\n    raise error_metas[0].to_error(msg)\nAssertionError: Tensor-likes are not close!\n\nMismatched elements: 29668835 / 33554432 (88.4%)\nGreatest absolute difference: 4.51171875 at index (62, 40, 0, 58) (up to 0.01 allowed)\nGreatest relative difference: inf at index (0, 24, 38, 40) (up to 0.01 allowed)\n"
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 3.6536319255828857,
+        "p50": 3.654655933380127,
+        "p80": 3.6577279567718506,
+        "p90": 3.6684800386428833,
+        "p95": 3.668992042541504,
+        "p99": 3.6710400581359863
+      },
+      "roofline": {
+        "traffic_bytes": 270532608,
+        "achieved_GBps": 74.0240977349102,
+        "pct_of_measured_copy_bw": 8.979669001912045,
+        "flops": 17179869184,
+        "achieved_TFLOPs": 4.700817121274298,
+        "pct_of_measured_fp16_mm": 4.844231550568612
+      }
+    },
+    "torch_sdpa_output_only": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.7598080039024353,
+        "p50": 0.7618560194969177,
+        "p80": 0.7649279832839966,
+        "p90": 0.7659519910812378,
+        "p95": 0.766975998878479,
+        "p99": 0.7700480222702026
+      },
+      "roofline": {
+        "traffic_bytes": 268435456,
+        "achieved_GBps": 352.3440770045475,
+        "pct_of_measured_copy_bw": 42.74193516840282,
+        "flops": 17179869184,
+        "achieved_TFLOPs": 22.550020928291037,
+        "pct_of_measured_fp16_mm": 23.237986083831704
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- q/k/v/output: [B, H, T, D]; lse: [B, H, T]",
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 97.03948030152522,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_m": 32,
+      "block_n": 32,
+      "num_warps": 4,
+      "num_stages": 2
+    },
+    "latency_ms": 3.6547173738479612,
+    "evaluated_configurations": 54,
+    "rejected_configurations": 0
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "8c1e5aacde2c617835c86dfeaa6dbffe16b4e419275e0e58491976d2170c3990",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "2",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "16384",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}
+Exit: 0 2026-10-16T19:35:03Z

@@ -1,8 +1,8 @@
 Command: bash -c nvidia-smi; nvcc --version; ptxas --version; ncu --version;
   find .venv -name ptxas -type f -exec {} --version \;; .venv/bin/python -c "import torch, triton; print(torch.__version__, torch.version.cuda, triton.__version__)";
   .venv/bin/uv pip freeze --python .venv/bin/python
-Start: 2026-10-16T15:18:56Z
-Fri Oct 16 15:18:57 2026       
+Start: 2026-10-16T20:01:37Z
+Fri Oct 16 20:01:38 2026       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |
 +-----------------------------------------+------------------------+----------------------+
@@ -11,7 +11,7 @@ Fri Oct 16 15:18:57 2026
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
 |   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |
-| N/A   38C    P0             43W /  300W |       0MiB /  16384MiB |      0%      Default |
+| N/A   38C    P0             40W /  300W |       0MiB /  16384MiB |      0%      Default |
 |                                         |                        |                  N/A |
 +-----------------------------------------+------------------------+----------------------+
 
@@ -142,4 +142,4 @@ typing-inspection==0.4.4
 urllib3==2.8.0
 uv==0.9.5
 websockets==16.1.1
-Exit: 0 2026-10-16T15:18:59Z
+Exit: 0 2026-10-16T20:01:45Z

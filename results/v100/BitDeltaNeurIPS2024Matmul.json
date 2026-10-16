@@ -1,0 +1,132 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "BitDeltaNeurIPS2024Matmul",
+    "--output",
+    "results/v100/BitDeltaNeurIPS2024Matmul.json"
+  ],
+  "kernel": "BitDeltaNeurIPS2024Matmul",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 19:35:13 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 2.9599743366241458,
+        "p50": 2.9936639070510864,
+        "p80": 3.0015487670898438,
+        "p90": 3.008614420890808,
+        "p95": 3.012608051300049,
+        "p99": 3.01363205909729
+      },
+      "roofline": {
+        "traffic_bytes": 102760448,
+        "achieved_GBps": 34.32598020037071,
+        "pct_of_measured_copy_bw": 4.163994561194761,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 45.90994772268356,
+        "pct_of_measured_fp16_mm": 47.15238795965686
+      }
+    },
+    "triton": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 12.640870094299316,
+        "p50": 12.667391777038574,
+        "p80": 12.705587387084961,
+        "p90": 12.717568111419677,
+        "p95": 12.735795211791993,
+        "p99": 12.752374153137207
+      },
+      "roofline": {
+        "traffic_bytes": 69206016,
+        "achieved_GBps": 5.463320091310796,
+        "pct_of_measured_copy_bw": 0.6627410204600226,
+        "flops": 137438953472,
+        "achieved_TFLOPs": 10.849822591034675,
+        "pct_of_measured_fp16_mm": 11.143446452959983
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float16 tensor with shape (4096, 4096)\n- b_ptr: int32 tensor with shape (128, 4096) containing 32 packed binary weights per element\n- c_ptr: float16 tensor with shape (4096, 4096)",
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 97.3650534135486,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune": {
+    "parameters": {
+      "block_size_m": 32,
+      "block_size_n": 64,
+      "block_size_k": 32,
+      "num_warps": 4,
+      "num_stages": 4
+    },
+    "latency_ms": 12.678417015075684,
+    "evaluated_configurations": 216,
+    "rejected_configurations": 24
+  },
+  "triton_metadata": {
+    "allowed_dot_input_precisions": "['tf32', 'tf32x3', 'ieee', 'bf16x3', 'bf16x6']",
+    "arch": "sm70",
+    "backend_name": "cuda",
+    "debug": "False",
+    "default_dot_input_precision": "tf32",
+    "deprecated_fp8_dot_operand_dtypes": "[]",
+    "enable_fp_fusion": "True",
+    "enable_reflect_ftz": "True",
+    "extern_libs": "[['libdevice', '/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/backends/nvidia/lib/libdevice.10.bc']]",
+    "global_scratch_align": "1",
+    "global_scratch_size": "0",
+    "hash": "634260c14b225291b18dedfc43f2019ebdcbafda1e98d96cb022fc0b3997f568",
+    "instrumentation_mode": "",
+    "ir_override": "None",
+    "launch_cooperative_grid": "False",
+    "launch_pdl": "False",
+    "max_num_imprecise_acc_default": "0",
+    "maxnreg": "None",
+    "name": "kernel",
+    "num_ctas": "1",
+    "num_stages": "3",
+    "num_threads_x": "None",
+    "num_threads_y": "None",
+    "num_threads_z": "None",
+    "num_warps": "4",
+    "profile_scratch_align": "1",
+    "profile_scratch_size": "0",
+    "ptx_options": "None",
+    "ptx_version": "None",
+    "sanitize_overflow": "True",
+    "shared": "8192",
+    "supported_fp8_dtypes": "['fp8e4b15', 'fp8e5']",
+    "target": "GPUTarget(backend='cuda', arch=70, warp_size=32)",
+    "tensordesc_meta": "[]",
+    "tmem_size": "0",
+    "triton_version": "3.6.0",
+    "warp_size": "32"
+  }
+}

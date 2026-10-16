@@ -1,0 +1,76 @@
+{
+  "command": [
+    "scripts/baselines.py",
+    "MatrixVectorMultiplicationFloat8Kernel",
+    "--output",
+    "results/v100/MatrixVectorMultiplicationFloat8Kernel.json"
+  ],
+  "kernel": "MatrixVectorMultiplicationFloat8Kernel",
+  "torch": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "ptx_system": [
+    "8.7",
+    "sm_70",
+    64
+  ],
+  "nvidia_smi": "Fri Oct 16 20:06:28 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   39C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "implementations": {
+    "pytorch_eager": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.22323200106620789,
+        "p50": 0.22323200106620789,
+        "p80": 0.2242559939622879,
+        "p90": 0.2252800017595291,
+        "p95": 0.22630399465560913,
+        "p99": 0.23347200453281403
+      },
+      "roofline": {
+        "traffic_bytes": 16797696,
+        "achieved_GBps": 75.24770606261782,
+        "pct_of_measured_copy_bw": 9.120925481380564
+      }
+    },
+    "torch_upcast_fp16_mv": {
+      "correct": true,
+      "cases": [
+        "random:5",
+        "zeros",
+        "small"
+      ],
+      "timing_ms": {
+        "p20": 0.17715199291706085,
+        "p50": 0.17817600071430206,
+        "p80": 0.17817600071430206,
+        "p90": 0.17919999361038208,
+        "p95": 0.17919999361038208,
+        "p99": 0.18285567805171007
+      },
+      "roofline": {
+        "traffic_bytes": 16797696,
+        "achieved_GBps": 94.27586169101652,
+        "pct_of_measured_copy_bw": 11.42736641647448
+      }
+    }
+  },
+  "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
+  "shape": "- a_ptr: float8_e4m3fn tensor with shape (4096, 4096)\n- x_ptr: float8_e4m3fn tensor with shape (4096,)\n- y_ptr: float16 tensor with shape (4096,)",
+  "rtol": 0.1,
+  "atol": 0.1,
+  "peaks": {
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 97.32533826292132,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "autotune_error": "Traceback (most recent call last):\n  File \"/home/<user>/taic-exp/scripts/baselines.py\", line 161, in main\n    tuning_result = op.autotune()\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/base.py\", line 93, in autotune\n    reference, _ = self.forward_triton(inputs)\n  File \"/home/<user>/taic-exp/.upstream/taic/ptx_gym/ptx_gym/kernels/common/matrix_vector_multiplication.py\", line 86, in forward_triton\n    kernel = launch_kernel[grid](\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 370, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 720, in run\n    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/runtime/jit.py\", line 851, in _do_compile\n    kernel = self.compile(src, target=target, options=options.__dict__, ptx=self.ptx)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 304, in compile\n    module = src.make_ir(target, options, codegen_fns, module_map, context)\n  File \"/home/<user>/taic-exp/.venv/lib/python3.10/site-packages/triton/compiler/compiler.py\", line 80, in make_ir\n    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,\ntriton.compiler.errors.CompilationError: at 1:0:\ndef kernel(\n^\nValueError(\"type fp8e4nv not supported in this architecture. The supported fp8 dtypes are ('fp8e4b15', 'fp8e5')\")\n"
+}

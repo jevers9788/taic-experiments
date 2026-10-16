@@ -1,7 +1,7 @@
 Command: .venv/bin/python scripts/baselines.py SoftmaxFloat16Kernel --output results/v100/SoftmaxFloat16Kernel.json
-Start: 2026-10-16T15:20:50Z
-Tuning SoftmaxFloat16Kernel:   0%|          | 0/6 [00:00<?, ?configuration/s]Tuning SoftmaxFloat16Kernel:  17%|█▋        | 1/6 [00:00<00:01,  2.59configuration/s]Tuning SoftmaxFloat16Kernel:  33%|███▎      | 2/6 [00:00<00:01,  3.02configuration/s]Tuning SoftmaxFloat16Kernel:  50%|█████     | 3/6 [00:00<00:00,  3.23configuration/s]Tuning SoftmaxFloat16Kernel:  67%|██████▋   | 4/6 [00:01<00:00,  3.33configuration/s]Tuning SoftmaxFloat16Kernel:  83%|████████▎ | 5/6 [00:01<00:00,  3.36configuration/s]Tuning SoftmaxFloat16Kernel: 100%|██████████| 6/6 [00:01<00:00,  3.38configuration/s]Tuning SoftmaxFloat16Kernel: 100%|██████████| 6/6 [00:01<00:00,  3.27configuration/s]
-SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.0121 ms median; 0/6 rejected)
+Start: 2026-10-16T17:08:13Z
+Tuning SoftmaxFloat16Kernel:   0%|          | 0/6 [00:00<?, ?configuration/s]Tuning SoftmaxFloat16Kernel:  17%|█▋        | 1/6 [00:00<00:01,  2.57configuration/s]Tuning SoftmaxFloat16Kernel:  33%|███▎      | 2/6 [00:00<00:01,  3.01configuration/s]Tuning SoftmaxFloat16Kernel:  50%|█████     | 3/6 [00:00<00:00,  3.19configuration/s]Tuning SoftmaxFloat16Kernel:  67%|██████▋   | 4/6 [00:01<00:00,  3.28configuration/s]Tuning SoftmaxFloat16Kernel:  83%|████████▎ | 5/6 [00:01<00:00,  3.34configuration/s]Tuning SoftmaxFloat16Kernel: 100%|██████████| 6/6 [00:01<00:00,  3.36configuration/s]Tuning SoftmaxFloat16Kernel: 100%|██████████| 6/6 [00:01<00:00,  3.25configuration/s]
+SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.0127 ms median; 0/6 rejected)
 {
   "command": [
     "scripts/baselines.py",
@@ -18,7 +18,7 @@ SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.01
     "sm_70",
     64
   ],
-  "nvidia_smi": "Fri Oct 16 15:20:53 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   42C    P0             45W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+  "nvidia_smi": "Fri Oct 16 17:08:15 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla V100-SXM2-16GB           Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             41W /  300W |       3MiB /  16384MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
   "implementations": {
     "pytorch_eager": {
       "correct": true,
@@ -28,17 +28,17 @@ SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.01
         "small"
       ],
       "timing_ms": {
-        "p20": 0.011264000087976456,
+        "p20": 0.01228800043463707,
         "p50": 0.01228800043463707,
         "p80": 0.01228800043463707,
         "p90": 0.01228800043463707,
-        "p95": 0.01228800043463707,
+        "p95": 0.013311999849975109,
         "p99": 0.013311999849975109
       },
       "roofline": {
         "traffic_bytes": 4194304,
         "achieved_GBps": 341.33332126008185,
-        "pct_of_measured_copy_bw": 41.58528331516871
+        "pct_of_measured_copy_bw": 41.373696959407745
       }
     },
     "triton": {
@@ -49,27 +49,31 @@ SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.01
         "small"
       ],
       "timing_ms": {
-        "p20": 0.011264000087976456,
+        "p20": 0.01228800043463707,
         "p50": 0.01228800043463707,
         "p80": 0.01228800043463707,
         "p90": 0.01228800043463707,
-        "p95": 0.01228800043463707,
+        "p95": 0.013311999849975109,
         "p99": 0.013311999849975109
       },
       "roofline": {
         "traffic_bytes": 4194304,
         "achieved_GBps": 341.33332126008185,
-        "pct_of_measured_copy_bw": 41.58528331516871
+        "pct_of_measured_copy_bw": 41.373696959407745
       }
     }
   },
   "seed": 42,
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_fp16_reduced_precision_reduction": false
+  },
   "shape": "- x_ptr: float16 tensor with shape (4096, 256)\n- output_ptr: float16 tensor with shape (4096, 256)",
   "rtol": 0.001,
   "atol": 0.001,
   "peaks": {
-    "copy_GBps": 820.8031641221899,
-    "cublas_fp16_mm_TFLOPs": 98.02280614673296,
+    "copy_GBps": 825.0007766890358,
+    "cublas_fp16_mm_TFLOPs": 96.87313767885965,
     "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
   },
   "autotune": {
@@ -77,7 +81,7 @@ SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.01
       "num_warps": 4,
       "num_stages": 3
     },
-    "latency_ms": 0.012117873768239647,
+    "latency_ms": 0.012656252599124465,
     "evaluated_configurations": 6,
     "rejected_configurations": 0
   },
@@ -121,4 +125,4 @@ SoftmaxFloat16Kernel best tuning config: {'num_warps': 4, 'num_stages': 3} (0.01
     "warp_size": "32"
   }
 }
-Exit: 0 2026-10-16T15:21:00Z
+Exit: 0 2026-10-16T17:08:23Z
