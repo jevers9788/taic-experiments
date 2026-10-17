@@ -1,0 +1,5 @@
+Starting instance(s) taic-v100-20261015...
+.......................................................................................................................................................................................done.
+Updated [https://compute.googleapis.com/compute/v1/projects/<gcp-project>/zones/us-central1-a/instances/taic-v100-20261015].
+Instance internal IP is <ip>
+Instance external IP is <ip>

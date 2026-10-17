@@ -1,0 +1,108 @@
+{
+  "command": [
+    "scripts/verify_candidate.py",
+    "BitDeltaNeurIPS2024Matmul",
+    "runs/261017135054_BitDeltaNeurIPS2024Matmul_gpt-6-astra_max/final_candidate.ptx",
+    "--threads-x",
+    "128",
+    "--tuning-from",
+    "results/v100/BitDeltaNeurIPS2024Matmul.json",
+    "--output",
+    "results/v100/bitdelta-run1-resume-verify.json"
+  ],
+  "kernel": "BitDeltaNeurIPS2024Matmul",
+  "ptx_file": "runs/261017135054_BitDeltaNeurIPS2024Matmul_gpt-6-astra_max/final_candidate.ptx",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "tuning": {
+    "block_size_m": 32,
+    "block_size_n": 64,
+    "block_size_k": 32,
+    "num_warps": 4,
+    "num_stages": 4
+  },
+  "rtol": 0.001,
+  "atol": 0.001,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 96.29539865474997,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "correct": {
+    "candidate": true,
+    "triton": true,
+    "pytorch_eager": true
+  },
+  "p50_rounds_ms": {
+    "candidate": [
+      2.2527999877929688,
+      2.264064073562622,
+      2.2671360969543457,
+      2.264064073562622,
+      2.268160104751587,
+      2.269184112548828,
+      2.2671360969543457,
+      2.2568960189819336,
+      2.2671360969543457,
+      2.2881280183792114
+    ],
+    "triton": [
+      12.670975685119629,
+      12.695551872253418,
+      12.70681619644165,
+      12.67302417755127,
+      12.66431999206543,
+      12.675072193145752,
+      12.651519775390625,
+      12.655104160308838,
+      12.680191993713379,
+      12.661248207092285
+    ],
+    "pytorch_eager": [
+      2.9777920246124268,
+      2.9808640480041504,
+      2.9859840869903564,
+      2.9870080947875977,
+      2.988032102584839,
+      2.9900801181793213,
+      2.9885441064834595,
+      2.9921278953552246,
+      2.9921278953552246,
+      2.994175910949707
+    ]
+  },
+  "p50_ms": {
+    "candidate": 2.2671360969543457,
+    "triton": 12.67199993133545,
+    "pytorch_eager": 2.988288104534149
+  },
+  "roofline": {
+    "candidate": {
+      "traffic_bytes": 69206016,
+      "achieved_GBps": 30.525743952015436,
+      "pct_of_measured_copy_bw": 3.702997876554255,
+      "flops": 137438953472,
+      "achieved_TFLOPs": 60.62227744361466,
+      "pct_of_measured_fp16_mm": 62.95449033963196
+    },
+    "triton": {
+      "traffic_bytes": 69206016,
+      "achieved_GBps": 5.461333362926137,
+      "pct_of_measured_copy_bw": 0.6625000156543331,
+      "flops": 137438953472,
+      "achieved_TFLOPs": 10.845877068870523,
+      "pct_of_measured_fp16_mm": 11.263131178008292
+    },
+    "pytorch_eager": {
+      "traffic_bytes": 102760448,
+      "achieved_GBps": 34.387731170927225,
+      "pct_of_measured_copy_bw": 4.171485409352479,
+      "flops": 137438953472,
+      "achieved_TFLOPs": 45.992537755467076,
+      "pct_of_measured_fp16_mm": 47.76192673584035
+    }
+  },
+  "speedup_vs": {
+    "triton": 5.589430624989352,
+    "pytorch_eager": 1.318089420634515
+  }
+}

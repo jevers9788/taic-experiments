@@ -71,7 +71,12 @@ V100's tensor cores), re-checked independently
 - Context: cuBLAS on pre-unpacked FP16 weights takes 1.92 ms for this shape
   (FP16 GEMM baseline), but stores 16x the weight bytes, which defeats BitDelta
 
-One run, not TAIC's accepted output (credits ran out).
+Resumed with `--start-json` from that run's own initial candidate (+$5.47, total
+$16.46): round 1 found no faster verified candidate before the budget ran out, so
+TAIC's accepted final answer is that same kernel (identical PTX to candidate 9).
+Re-verified: correct, racecheck clean, 2.267 ms vs eager 2.988 ms and Triton
+12.672 ms (5.59x / 1.32x; `results/v100/bitdelta-run1-resume-verify.json`). The
+2% p50 difference from the first session (2.219 ms) is session-to-session variance.
 
 ## Interpretation
 

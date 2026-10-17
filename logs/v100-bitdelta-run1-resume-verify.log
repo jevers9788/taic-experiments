@@ -1,0 +1,19 @@
+Command: .venv/bin/python scripts/verify_candidate.py BitDeltaNeurIPS2024Matmul runs/261017135054_BitDeltaNeurIPS2024Matmul_gpt-6-astra_max/final_candidate.ptx --threads-x 128 --tuning-from results/v100/BitDeltaNeurIPS2024Matmul.json --output results/v100/bitdelta-run1-resume-verify.json
+Start: 2026-10-17T14:18:18Z
+{
+  "correct": {
+    "candidate": true,
+    "triton": true,
+    "pytorch_eager": true
+  },
+  "p50_ms": {
+    "candidate": 2.2671360969543457,
+    "triton": 12.67199993133545,
+    "pytorch_eager": 2.988288104534149
+  },
+  "speedup_vs": {
+    "triton": 5.589430624989352,
+    "pytorch_eager": 1.318089420634515
+  }
+}
+Exit: 0 2026-10-17T14:18:50Z
