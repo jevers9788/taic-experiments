@@ -81,7 +81,10 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     racecheck, synccheck and initcheck at full problem size. Triton's own FP16 GEMM
     PTX failed it ("Compute Sanitizer timed out after 120 seconds"), so TAIC rejects
     every GEMM candidate (agent.py:645) before any model work counts. Must be resolved
-    before paid runs (raise the timeout from the launcher, or `--disable-sanitizer`).
+    before paid runs. Chosen: `scripts/taic.py --skip-racecheck` (keeps memcheck,
+    synccheck, initcheck; a documented deviation from the paper's Safe(P) gate) and
+    `scripts/racecheck.py` on promising candidates afterwards. Verified: tuned GEMM
+    passes with Triton timed at 13.445 ms (logs/v100-taic-fixture-gemm-tuned-norace.log).
 
 12. A sanitizer timeout leaves the kernel under test running on the GPU and
     corrupts every later timing in the same run. `sanitizer.py:150-173` uses
@@ -94,7 +97,10 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     13.445 ms (logs/v100-gemm-timing-diag.log). Racecheck takes 1105 s on this
     GEMM (memcheck 10 s, synccheck 5 s, initcheck 5 s;
     logs/v100-sanitizer-gemm-timing.log). Any TAIC run where a candidate times out
-    is invalid until fixed: kill the process group on timeout (and/or avoid
-    racecheck timeouts). Scripts: scripts/diag/.
+    is invalid until fixed. FIXED from our side by scripts/ptxgym_fixes.py (kills the
+    process group; ncu-root.sh bounds the root-owned ncu tree with `timeout`).
+    Verified on V100: no survivors, 13.46 -> 13.50 ms across a timeout
+    (logs/v100-sanitizer-orphan-test-fixed.log). Scripts: scripts/diag/. Upstream
+    issue draft: docs/upstream-issue-ptxgym-sanitizer-timeout.md.
 
 No sm_75 portability claim can be made without running on a T4.

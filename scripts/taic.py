@@ -5,6 +5,8 @@ import the name-based `ptx_gym.api.dump_kernel_ptx`, so every run crashes before
 model call. Point both at the operator-based helper instead (as TAIC's own
 run_identity_compare.py does). Usage: python scripts/taic.py KERNEL [agent flags]
 
+Optional `--skip-racecheck` (ours) drops racecheck from the sanitizer gate; check
+promising candidates later with scripts/racecheck.py.
 Optional `--tuning-from results/<gpu>/<Kernel>.json` (ours, not TAIC's) reuses the
 Triton config our baseline autotune saved instead of re-autotuning at startup.
 Generation stays direct (no starting candidate); see use_saved_tuning().
@@ -14,6 +16,8 @@ import json
 from pathlib import Path
 import sys
 
+sys.path.insert(0, str(Path(__file__).parent))
+import ptxgym_fixes  # process-group kill on sanitizer/ncu timeouts (PORTING.md 12)
 import agent  # TAIC, from .upstream/taic on PYTHONPATH
 from ptx_gym.helpers.triton import dump_kernel_ptx
 import utils.response
@@ -48,7 +52,10 @@ def use_saved_tuning(path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--tuning-from', type=Path)
+    parser.add_argument('--skip-racecheck', action='store_true')
     args, sys.argv[1:] = parser.parse_known_args()
+    if args.skip_racecheck:
+        ptxgym_fixes.skip_racecheck()
     if args.tuning_from:
         use_saved_tuning(args.tuning_from)
     agent.main()

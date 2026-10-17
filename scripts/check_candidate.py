@@ -6,6 +6,8 @@ import re
 import sys
 
 import torch
+sys.path.insert(0, str(Path(__file__).parent))
+import ptxgym_fixes  # noqa: F401  (process-group kill on timeouts)
 from ptx_gym.evaluation.compilation import compile_ptx
 from ptx_gym.evaluation.evaluate import TritonPTXCandidateEvaluator
 from ptx_gym.evaluation.types import Payload

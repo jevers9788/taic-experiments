@@ -1,0 +1,12 @@
+Command: .venv/bin/python scripts/diag/orphan_test_fixed.py
+Start: 2026-10-17T00:27:56Z
+before: GEMM p50 13.459
+racecheck returned after 60 s; error: Compute Sanitizer timed out after 60 seconds.
+surviving processes:
+   8366       00:00 bash -c ps -eo pid,etime,cmd | grep -E "[s]anitizer|[T]reeLauncher|ptx_gym.evaluation" | cut -c1-140
+   8368       00:00 grep -E [s]anitizer|[T]reeLauncher|ptx_gym.evaluation
+
+nvidia-smi apps: 8215, 718 MiB
+
+after: GEMM p50 13.497
+Exit: 0 2026-10-17T00:29:08Z

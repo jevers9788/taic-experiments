@@ -68,7 +68,10 @@ def main():
     parser.add_argument('--trace-path', required=True, type=Path)
     parser.add_argument('--kernel', default='ReLUFloat16Kernel')
     parser.add_argument('--tuning-from', type=Path)
+    parser.add_argument('--skip-racecheck', action='store_true')
     args = parser.parse_args()
+    if args.skip_racecheck:
+        taic.ptxgym_fixes.skip_racecheck()
     if args.tuning_from:
         taic.use_saved_tuning(args.tuning_from)
     real_verifier_for_kernel = agent.verifier_for_kernel

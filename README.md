@@ -87,6 +87,10 @@ ownership must be restored afterward.
      seeds generation from it (a different method from the paper's).
      The fixture takes the same flag and `--kernel` (non-ReLU kernels get
      Triton's own PTX back, so ~1.0x).
+   - Large kernels on pre-Ampere GPUs: add `--skip-racecheck` (racecheck takes
+     ~18 min per FP16 GEMM candidate on V100). Before reporting a result, run
+     `scripts/racecheck.py KERNEL runs/<run>/final_candidate.ptx --threads-x N
+     --tuning-from results/<gpu>/KERNEL.json` on it (PORTING.md 11).
 
 See REPORT.md for remaining work and PORTING.md for correctness concerns.
 

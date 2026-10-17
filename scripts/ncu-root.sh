@@ -5,7 +5,10 @@ ncu_bin=/usr/local/cuda-12.8/bin/ncu
 status=0
 # No root-owned .pyc files in the venv/source tree.
 # Root gets its own Triton cache, so user runs never hit root-owned cache dirs.
-sudo -E PYTHONDONTWRITEBYTECODE=1 TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$HOME/.triton/cache}-root" "$ncu_bin" "$@" || status=$?
+# PTX Gym times ncu out at 300 s, but cannot kill root processes; `timeout` kills the
+# whole root-owned process group first (PORTING.md 12).
+sudo -E PYTHONDONTWRITEBYTECODE=1 TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$HOME/.triton/cache}-root" \
+  timeout -k 5 "${NCU_TIMEOUT:-280}" "$ncu_bin" "$@" || status=$?
 for ((i=1; i<=$#; i++)); do
   if [[ ${!i} == -o || ${!i} == --export ]]; then
     j=$((i+1)); report=${!j}
