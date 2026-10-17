@@ -1,0 +1,19 @@
+Command: .venv/bin/python scripts/verify_candidate.py MatrixVectorMultiplicationFloat16Kernel runs/261017004025_MatrixVectorMultiplicationFloat16Kernel_gpt-6-astra_max/tool_output/007_launch_verifier_speedup_vs_triton_2.4706x.ptx --threads-x 128 --tuning-from results/v100/MatrixVectorMultiplicationFloat16Kernel.json --output results/v100/gemv-run1-c007-verify.json
+Start: 2026-10-17T01:15:37Z
+{
+  "correct": {
+    "candidate": true,
+    "triton": true,
+    "pytorch_eager": true
+  },
+  "p50_ms": {
+    "candidate": 0.053247999399900436,
+    "triton": 0.130048006772995,
+    "pytorch_eager": 0.053247999399900436
+  },
+  "speedup_vs": {
+    "triton": 2.4423078470294257,
+    "pytorch_eager": 1.0
+  }
+}
+Exit: 0 2026-10-17T01:16:02Z

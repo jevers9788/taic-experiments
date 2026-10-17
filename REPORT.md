@@ -40,6 +40,21 @@ Out of scope: economics (cost per token) and scale-out claims.
 Hardware confirmed the upstream FlashAttention reference mismatch (88% of
 outputs; PORTING.md 3).
 
+## First TAIC run (V100, FP16 GEMV)
+
+Paper defaults (gpt-6-astra, max effort, direct generation), `--tuning-from`,
+`--skip-racecheck`, $3 budget. The budget ran out ($3.60) inside the initial-
+candidate step, so TAIC returned no accepted answer. Of 7 verifier attempts, 4
+passed. The best (candidate 7), re-checked independently
+(`results/v100/gemv-run1-c007-verify.json`):
+- correct vs our FP32 reference on random, zero and tiny inputs; racecheck clean
+- same-harness p50: candidate 0.0532 ms = cuBLAS 0.0532 ms; Triton 0.1300 ms
+- 2.44x vs Triton (paper's metric); parity with cuBLAS; 76.5% vs 31.3% of
+  measured bandwidth
+
+One run, one kernel, not TAIC's accepted output. Next: rerun with a realistic
+budget ($10-15) so TAIC completes.
+
 ## Interpretation
 
 - Primary metric is speedup vs autotuned Triton, as in the paper. cuBLAS/SDPA
