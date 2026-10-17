@@ -103,4 +103,13 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     (logs/v100-sanitizer-orphan-test-fixed.log). Scripts: scripts/diag/. Upstream
     issue draft: docs/upstream-issue-ptxgym-sanitizer-timeout.md.
 
+13. Why SageAttention fails on V100: its `tl.dot` takes int8 Q and K (source line
+    128). Below sm_80, Triton's FMA fallback promotes dot operands with
+    `promoteOperand` (`triton_src/lib/Dialect/TritonGPU/Transforms/AccelerateMatmul.cpp:894`),
+    which handles FP8 (`FpToFpOp`) and otherwise emits `arith::ExtFOp`, a
+    float-to-float extension, so int8 operands produce invalid IR: "'arith.extf' op
+    operand #0 must be floating-point-like, but got 'tensor<128x64xi8>'"
+    (logs/v100-baseline-SageAttentionICLR2025.log). A bug in the untested pre-Ampere
+    path, not a hardware limit (sm_70 has integer dot instructions, e.g. dp4a).
+
 No sm_75 portability claim can be made without running on a T4.
