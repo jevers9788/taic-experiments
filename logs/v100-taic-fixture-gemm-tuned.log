@@ -1,0 +1,16 @@
+Command: .venv/bin/python scripts/taic_fixture.py --kernel MatrixMultiplicationFloat16 --tuning-from results/v100/MatrixMultiplicationFloat16.json --trace-path results/v100/taic-fixture-gemm-tuned
+Start: 2026-10-16T23:40:14Z
+=== Start of the agent loop ===
+=== Writing trace artifacts to results/v100/taic-fixture-gemm-tuned/261016234047_MatrixMultiplicationFloat16_fixture_None ===
+=== Generating initial candidate ===
+=== Fixture stub answering initial_candidate at 2026-10-16T23:41:07Z ===
+Candidate result: compiles=True, correct=False, p50=None, speedup=0, message=Sanitizer check failed (input: default): Compute Sanitizer timed out after 120 seconds.
+Traceback (most recent call last):
+  File "/home/<user>/taic-exp/scripts/taic_fixture.py", line 93, in <module>
+    main()
+  File "/home/<user>/taic-exp/scripts/taic_fixture.py", line 83, in main
+    final = json.loads(agent.run_agent_loop(
+  File "/home/<user>/taic-exp/.upstream/taic/agent.py", line 645, in run_agent_loop
+    raise RuntimeError("Initial candidate must compile and pass verification.")
+RuntimeError: Initial candidate must compile and pass verification.
+Exit: 1 2026-10-16T23:43:25Z

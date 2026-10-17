@@ -1,0 +1,19 @@
+Command: .venv/bin/python -c 
+import json, time
+from ptx_gym import resolve_kernel
+from ptx_gym.evaluation.sanitizer import diagnose_ptx, SANITIZER_TOOLS
+from ptx_gym.evaluation.types import Payload
+from ptx_gym.helpers.triton import dump_kernel_ptx
+cfg = json.load(open("results/v100/MatrixMultiplicationFloat16.json"))["autotune"]["parameters"]
+op = resolve_kernel("MatrixMultiplicationFloat16")(ptx={"tuning_config": cfg})
+payload = Payload(ptx=dump_kernel_ptx(op), threads_x=op.num_warps * 32)
+for tool in SANITIZER_TOOLS:
+    t = time.time()
+    r = diagnose_ptx("MatrixMultiplicationFloat16", payload.to_launch_dict(), sanitizer_tool=tool, tuning_config=op.best_config, timeout_seconds=1200)
+    print(tool, "clean=%s" % r.get("clean"), "seconds=%.0f" % (time.time() - t), r.get("error"), flush=True)
+Start: 2026-10-16T23:57:26Z
+memcheck clean=True seconds=10 None
+racecheck clean=True seconds=1105 None
+synccheck clean=True seconds=5 None
+initcheck clean=True seconds=5 None
+Exit: 0 2026-10-17T00:16:21Z

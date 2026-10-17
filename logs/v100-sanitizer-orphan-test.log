@@ -1,0 +1,14 @@
+before: GEMM p50 13.525
+racecheck returned after 60 s; error: Compute Sanitizer timed out after 60 seconds.
+surviving processes:
+   7549       01:11 bash -c .venv/bin/python /tmp/orphan_test.py > logs/v100-sanitizer-orphan-test.log 2>&1; echo ORPHAN_DONE >> logs/v100-s
+   7625       01:05 /usr/local/cuda-12.8/compute-sanitizer/TreeLauncherSubreaper -m ptx_gym.evaluation.sanitizer --run-request /home/jamesev
+   7631       01:05 /home/<user>/taic-exp/.venv/bin/python -m ptx_gym.evaluation.sanitizer --run-request /home/<user>/taic-exp/.upst
+   7773       00:00 bash -c ps -eo pid,etime,cmd | grep -E "[s]anitizer|[T]reeLauncher|ptx_gym.evaluation" | cut -c1-140
+   7775       00:00 grep -E [s]anitizer|[T]reeLauncher|ptx_gym.evaluation
+
+nvidia-smi apps: 7550, 718 MiB
+7631, 476 MiB
+
+after: GEMM p50 31.647
+ORPHAN_DONE

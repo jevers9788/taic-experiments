@@ -1,0 +1,7 @@
+A  fixed-config op, do_bench: 13.456
+A2 same, fixed=True inputs  : 13.635
+B  after clear_triton_cache : 13.442
+C  after importing TAIC     : 13.443
+D  evaluate_ptx_performance : triton 13.445 ptx 13.445
+E  plain do_bench again     : 13.445
+DIAG_DONE

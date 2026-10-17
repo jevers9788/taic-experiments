@@ -83,4 +83,18 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     every GEMM candidate (agent.py:645) before any model work counts. Must be resolved
     before paid runs (raise the timeout from the launcher, or `--disable-sanitizer`).
 
+12. A sanitizer timeout leaves the kernel under test running on the GPU and
+    corrupts every later timing in the same run. `sanitizer.py:150-173` uses
+    `subprocess.run(timeout=...)`, which kills only compute-sanitizer, not the
+    TreeLauncherSubreaper and target process it spawned. Measured on V100: Triton
+    FP16 GEMM 13.53 ms before a racecheck timeout, 31.65 ms after, with the orphan
+    still on the GPU (logs/v100-sanitizer-orphan-test.log). This explains TAIC's
+    31.66 ms Triton p50 vs our 13.44 ms baseline: an orphan from the previous
+    timed-out run. Without orphans, PTX Gym's evaluation path itself measures
+    13.445 ms (logs/v100-gemm-timing-diag.log). Racecheck takes 1105 s on this
+    GEMM (memcheck 10 s, synccheck 5 s, initcheck 5 s;
+    logs/v100-sanitizer-gemm-timing.log). Any TAIC run where a candidate times out
+    is invalid until fixed: kill the process group on timeout (and/or avoid
+    racecheck timeouts). Scripts: scripts/diag/.
+
 No sm_75 portability claim can be made without running on a T4.
