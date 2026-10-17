@@ -38,8 +38,10 @@ def use_saved_tuning(path):
     The Triton baseline is still timed live on every evaluation (evaluate.py).
     """
     record = json.loads(Path(path).read_text())
-    metrics = {'selected_config': record['autotune']['parameters'],
-               'tuning_result': record['autotune']}
+    # Kernels Triton can't compile here (launcher mode) have no tuning: use class defaults.
+    tuned = record.get('autotune')
+    metrics = {'selected_config': tuned['parameters'] if tuned else {},
+               'tuning_result': tuned}
     real = utils.response.verifier_for_kernel
 
     def verifier(kernel_name, autotune_metrics=None, **kwargs):

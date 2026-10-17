@@ -7,7 +7,7 @@ status=0
 # Root gets its own Triton cache, so user runs never hit root-owned cache dirs.
 # PTX Gym times ncu out at 300 s, but cannot kill root processes; `timeout` kills the
 # whole root-owned process group first (PORTING.md 12).
-sudo -E PYTHONDONTWRITEBYTECODE=1 TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$HOME/.triton/cache}-root" \
+sudo -E PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="${PYTHONPATH:-}" PTX_LAUNCHER_KERNELS="${PTX_LAUNCHER_KERNELS:-}" TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$HOME/.triton/cache}-root" \
   timeout -k 5 "${NCU_TIMEOUT:-280}" "$ncu_bin" "$@" || status=$?
 for ((i=1; i<=$#; i++)); do
   if [[ ${!i} == -o || ${!i} == --export ]]; then
