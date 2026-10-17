@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# On the GPU VM, after a TAIC run: pick TAIC's accepted answer (else the fastest
+# verified candidate), verify it independently, racecheck it, and pack results.
+# Usage: KERNEL=... TAG=... [PTX_LAUNCHER_KERNELS=...] bash scripts/ops/post_run.sh
+cd ~/taic-exp && source scripts/env.sh
+D=$(ls -td runs/*_${KERNEL}_* | head -1)
+SEL=$(.venv/bin/python - "$D" <<'PY'
+import glob, json, os, sys
+d = sys.argv[1]
+final = glob.glob(os.path.join(d, 'final_speedup_vs_triton_*.json'))
+if final:
+    print('accepted', os.path.join(d, 'final_candidate.ptx'), json.load(open(final[0]))['num_threads_x'])
+    sys.exit()
+best = None
+for j in glob.glob(os.path.join(d, 'tool_output', '*_launch_verifier.json')):
+    r = json.load(open(j)); a = r.get('answer') or {}
+    ptx = glob.glob(j.replace('.json', '_speedup_vs_triton_*.ptx'))
+    if a.get('passed') and ptx and (best is None or a['speedup_vs_triton'] > best[0]):
+        best = (a['speedup_vs_triton'], ptx[0], r['resulting_payload']['num_threads_x'])
+print('best_tested', best[1], best[2]) if best else print('none')
+PY
+)
+echo "run: $D" > logs/v100-$TAG-selection.log; echo "selection: $SEL" >> logs/v100-$TAG-selection.log
+read KIND PTX THREADS <<< "$SEL"
+T=results/v100/$KERNEL.json
+step() { local n=$1; shift; { echo "Command: $*"; echo "Start: $(date -u +%FT%TZ)"; } > logs/v100-$n.log; "$@" >> logs/v100-$n.log 2>&1; echo "Exit: $? $(date -u +%FT%TZ)" >> logs/v100-$n.log; }
+if [[ $KIND != none ]]; then
+  step $TAG-verify .venv/bin/python scripts/verify_candidate.py $KERNEL "$PTX" --threads-x "$THREADS" --tuning-from $T --output results/v100/$TAG-verify.json
+  step $TAG-racecheck .venv/bin/python scripts/racecheck.py $KERNEL "$PTX" --threads-x "$THREADS" --tuning-from $T --timeout 3600
+fi
+O=/tmp/out-$TAG; rm -rf $O && mkdir -p $O/runs $O/logs $O/results
+cp -r "$D" $O/runs/; cp logs/v100-$TAG*.log $O/logs/ 2>/dev/null; cp results/v100/$TAG-verify.json $O/results/ 2>/dev/null
+chmod -R a+rX $O; tar czf $O.tgz -C /tmp out-$TAG; echo DONE > $O.done

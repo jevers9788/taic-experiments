@@ -34,7 +34,7 @@ def main():
     torch.manual_seed(42)
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cuda.matmul.allow_fp16_reduced_precision_reduction = False
-    tuning = json.loads(args.tuning_from.read_text())['autotune']['parameters']
+    tuning = (json.loads(args.tuning_from.read_text()).get('autotune') or {}).get('parameters', {})  # none if Triton failed
     op = resolve_kernel(args.kernel)(ptx={'tuning_config': tuning})
     op.set_ptx({'ptx': args.ptx.read_text(), 'num_threads_x': args.threads_x})
     functions = {'candidate': lambda x: op.forward_triton(x, ptx=True)[0],

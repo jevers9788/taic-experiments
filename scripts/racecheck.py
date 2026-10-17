@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--tuning-from', type=Path, required=True)
     parser.add_argument('--timeout', type=int, default=3600)
     args = parser.parse_args()
-    tuning = json.loads(args.tuning_from.read_text())['autotune']['parameters']
+    tuning = (json.loads(args.tuning_from.read_text()).get('autotune') or {}).get('parameters', {})  # none if Triton failed
     payload = Payload(ptx=args.ptx.read_text(), threads_x=args.threads_x)
     result = diagnose_ptx(args.kernel, payload.to_launch_dict(), sanitizer_tool='racecheck',
                           timeout_seconds=args.timeout, tuning_config=tuning)
