@@ -16,6 +16,10 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
    kernel for a target, PTX Gym cannot evaluate ANY candidate for it, and
    `scripts/generate.py` cannot run it either. Planned fix: a Triton-free ctypes
    CUDA-driver launcher using the contract captured where Triton works.
+   DONE: scripts/ptx_launcher.py records the operator's own launch without
+   compiling and runs PTX via ptxas + the CUDA driver; on V100 it reproduces
+   Triton bit for bit for GEMV, softmax, GEMM and BitDelta and records
+   SageAttention's launch (logs/v100-ptx-launcher-gpu-test.log).
    `scripts/baselines.py` now saves each kernel's Triton PTX (entry ABI) and
    compile metadata to `results/<gpu>/ptx/`; the grid is not yet captured.
 3. FlashAttention forward launches with IS_CAUSAL=False, while forward_torch
