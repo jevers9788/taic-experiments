@@ -116,4 +116,17 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
     (logs/v100-baseline-SageAttentionICLR2025.log). A bug in the untested pre-Ampere
     path, not a hardware limit (sm_70 has integer dot instructions, e.g. dp4a).
 
+14. Launcher mode (scripts/launcher_mode.py): TAIC/PTX Gym on kernels Triton can't
+    compile for the target. Set PTX_LAUNCHER_KERNELS=<Kernel>[,...]. Candidates run
+    via scripts/ptx_launcher.py; the reference and timing baseline become the stock
+    PyTorch path (forward_torch), so "triton_p50"/"speedup_vs_triton" in PTX Gym and
+    TAIC outputs mean stock PyTorch for these kernels (a necessary change of
+    yardstick: Triton has no result). TAIC gets an entry template in Triton's exact
+    ABI and no dynamic shared-memory budget; candidates that declare
+    `.extern .shared` get 48 KB. Subprocesses are patched via scripts/site/
+    sitecustomize.py. Verified on V100 (logs/v100-launcher-mode-gpu-test.log):
+    templates equal Triton's real entries; GEMV passes the full evaluation incl.
+    sanitizer and ncu subprocesses with the stock baseline; SageAttention's prompt,
+    sanitizer and verifier run without Triton.
+
 No sm_75 portability claim can be made without running on a T4.

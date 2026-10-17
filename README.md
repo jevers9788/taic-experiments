@@ -79,7 +79,9 @@ ownership must be restored afterward.
      only tracked, and `--max-budget` only enforced, for models in TAIC's
      pricing table (`.upstream/taic/utils/cost.py`); others log "cost
      unavailable". Per-run cost: `runs/<run>/prices.log`.
-   - TAIC needs Triton to compile the kernel first (PORTING.md item 2).
+   - Kernels Triton can't compile on the target (e.g. SageAttention, FP8 on sm_70):
+     prefix the command with `PTX_LAUNCHER_KERNELS=<Kernel>` (PORTING.md 14);
+     speedups are then vs the stock PyTorch path, not Triton.
    - TAIC re-autotunes Triton at startup (~1 h for FP16 GEMM on V100). Add
      `--tuning-from results/<gpu>/KERNEL.json` (ours) to reuse the config our
      baseline saved; generation stays direct and Triton is still timed live.

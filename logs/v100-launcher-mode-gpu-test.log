@@ -1,0 +1,9 @@
+Command: PTX_LAUNCHER_KERNELS=SageAttentionICLR2025,MatrixVectorMultiplicationFloat16Kernel .venv/bin/python tests/test_launcher_mode_gpu.py results/v100
+Start: 2026-10-17T22:45:22Z
+SoftmaxFloat16Kernel: template entry == Triton entry
+BitDeltaNeurIPS2024Matmul: template entry == Triton entry
+GEMV: passed; candidate 0.1290 ms vs stock 0.0532 ms; ncu available=True
+Sage: template + sanitizer subprocess + verifier ran without Triton; correctness failed as expected
+TAIC on Sage: prompt built without Triton; stub candidate rejected by correctness
+ok
+Exit: 0 2026-10-17T22:48:40Z
