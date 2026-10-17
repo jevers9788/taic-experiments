@@ -1,0 +1,1 @@
+selection: best_tested runs/261017012536_BitDeltaNeurIPS2024Matmul_gpt-6-astra_max/tool_output/009_launch_verifier_speedup_vs_triton_5.6839x.ptx 128

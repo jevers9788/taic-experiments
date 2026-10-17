@@ -1,0 +1,8 @@
+Command: .venv/bin/python scripts/racecheck.py BitDeltaNeurIPS2024Matmul runs/261017012536_BitDeltaNeurIPS2024Matmul_gpt-6-astra_max/tool_output/009_launch_verifier_speedup_vs_triton_5.6839x.ptx --threads-x 128 --tuning-from results/v100/BitDeltaNeurIPS2024Matmul.json --timeout 3600
+Start: 2026-10-17T02:12:37Z
+{
+  "clean": true,
+  "error": null,
+  "diagnostics": []
+}
+Exit: 0 2026-10-17T02:14:56Z

@@ -55,6 +55,24 @@ passed. The best (candidate 7), re-checked independently
 One run, one kernel, not TAIC's accepted output. Next: rerun with a realistic
 budget ($10-15) so TAIC completes.
 
+## TAIC run 2 (V100, BitDelta)
+
+Paper defaults, `--tuning-from`, `--skip-racecheck`, $15 budget. Spent $10.99:
+the initial-candidate step ($9.90) and one improvement plan ($1.09), then the
+OpenAI account ran out of credits (HTTP 429), so TAIC wrote no final answer. Of
+9 verifier attempts, 7 passed. The best (candidate 9; uses `mma.sync`, i.e. the
+V100's tensor cores), re-checked independently
+(`results/v100/bitdelta-run1-verify.json`):
+- correct vs our FP32 reference on random, zero and tiny inputs; racecheck clean
+- same-harness p50: candidate 2.219 ms, PyTorch eager (unpack + cuBLAS) 2.975 ms,
+  Triton 12.665 ms
+- 5.71x vs Triton; 1.34x vs the stock path; 62.9% of the measured FP16 matmul
+  ceiling (Triton 11.0%)
+- Context: cuBLAS on pre-unpacked FP16 weights takes 1.92 ms for this shape
+  (FP16 GEMM baseline), but stores 16x the weight bytes, which defeats BitDelta
+
+One run, not TAIC's accepted output (credits ran out).
+
 ## Interpretation
 
 - Primary metric is speedup vs autotuned Triton, as in the paper. cuBLAS/SDPA
