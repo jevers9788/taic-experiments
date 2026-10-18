@@ -78,6 +78,21 @@ Re-verified: correct, racecheck clean, 2.267 ms vs eager 2.988 ms and Triton
 12.672 ms (5.59x / 1.32x; `results/v100/bitdelta-run1-resume-verify.json`). The
 2% p50 difference from the first session (2.219 ms) is session-to-session variance.
 
+## TAIC run 3 (V100, SageAttention, launcher mode): NOT VALID
+
+Triton can't compile this kernel on sm_70 (PORTING.md 13), so it ran in launcher
+mode: speedups are vs the stock PyTorch path. $15.12 spent. TAIC's accepted
+final answer converts int8 to FP16 and uses Volta tensor cores (mma.sync
+m8n8k4). It passed correctness on all test inputs and ran 0.270 ms vs the stock
+path's 2.250 ms (8.3x; `results/v100/taic-sage-run1-verify.json`), BUT
+**racecheck fails**: shared-memory writes of the softmax probabilities (PTX lines
+509-534) race with the P.V reads (line 614), with no barrier between them; Volta's
+independent thread scheduling makes this unsafe even within a warp
+(`logs/v100-taic-sage-run1-racecheck.log`). The run used `--skip-racecheck`, but
+racecheck takes only ~31 s for this kernel, so it should have stayed on: the
+paper's Safe(P) gate would have rejected this candidate. Decide racecheck per
+kernel from measured cost, not by default. Not claimable until a race-free run.
+
 ## Interpretation
 
 - Primary metric is speedup vs autotuned Triton, as in the paper. cuBLAS/SDPA
