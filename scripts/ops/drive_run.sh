@@ -10,13 +10,17 @@ ssh_vm() { gcloud compute ssh $VM --zone=$Z --project=$P --ssh-flag=-oConnectTim
 log() { echo "$(date -u +%FT%TZ) $*"; }
 stop_vm() { gcloud compute instances stop $VM --zone=$Z --project=$P 2>&1 | tail -1; log "VM status: $(gcloud compute instances describe $VM --zone=$Z --project=$P --format='value(status)')"; }
 trap stop_vm EXIT
-seen=0; idle=0; waited=0
+# Deadlines are wall-clock (a sleeping laptop or failed ssh must not extend them).
+start=$(date +%s); last_ok=$start; seen=0; idle=0
 while true; do
+  now=$(date +%s)
+  (( !seen && now - start > 3600 )) && { log "no run started within 1 h"; exit 1; }
+  (( now - last_ok > 1800 )) && { log "VM unreachable for 30 min"; exit 1; }
   out=$(ssh_vm "pgrep -f '^.venv/bin/python scripts/taic.py $KERNEL' >/dev/null && echo RUNNING; echo OK")
   [[ $out == *OK* ]] || { sleep 60; continue; }
+  last_ok=$now
   if [[ $out == *RUNNING* ]]; then seen=1; idle=0; else idle=$((idle+1)); fi
   (( seen && idle >= 3 )) && break
-  (( !seen && ++waited >= 60 )) && { log "no run started within ~1 h"; exit 1; }
   sleep 60
 done
 log "TAIC run ended; post-processing"
