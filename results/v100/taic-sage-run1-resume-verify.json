@@ -1,0 +1,102 @@
+{
+  "command": [
+    "scripts/verify_candidate.py",
+    "SageAttentionICLR2025",
+    "runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max/final_candidate.ptx",
+    "--threads-x",
+    "128",
+    "--tuning-from",
+    "results/v100/SageAttentionICLR2025.json",
+    "--output",
+    "results/v100/taic-sage-run1-resume-verify.json"
+  ],
+  "kernel": "SageAttentionICLR2025",
+  "ptx_file": "runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max/final_candidate.ptx",
+  "gpu": "Tesla V100-SXM2-16GB",
+  "tuning": {},
+  "rtol": 0.01,
+  "atol": 0.01,
+  "peaks": {
+    "copy_GBps": 824.352186245932,
+    "cublas_fp16_mm_TFLOPs": 95.1645682900839,
+    "method": "512 MiB device copy (read+write) and 8192^3 fp16 torch.mm, p50"
+  },
+  "correct": {
+    "candidate": true,
+    "triton": true,
+    "pytorch_eager": true
+  },
+  "p50_rounds_ms": {
+    "candidate": [
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615,
+      0.27136000990867615
+    ],
+    "triton": [
+      2.249727964401245,
+      2.248703956604004,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245
+    ],
+    "pytorch_eager": [
+      2.248703956604004,
+      2.248703956604004,
+      2.248703956604004,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245,
+      2.249727964401245
+    ]
+  },
+  "p50_ms": {
+    "candidate": 0.27136000990867615,
+    "triton": 2.249727964401245,
+    "pytorch_eager": 2.249727964401245
+  },
+  "roofline": {
+    "candidate": {
+      "traffic_bytes": 51126528,
+      "achieved_GBps": 188.40848368632572,
+      "pct_of_measured_copy_bw": 22.85533863194209,
+      "flops": 8589934592,
+      "achieved_TFLOPs": 31.65512337241905,
+      "pct_of_measured_fp16_mm": 33.263560105612854
+    },
+    "triton": {
+      "traffic_bytes": 51126528,
+      "achieved_GBps": 22.725648971344448,
+      "pct_of_measured_copy_bw": 2.7567888277019286,
+      "flops": 8589934592,
+      "achieved_TFLOPs": 3.818210347172429,
+      "pct_of_measured_fp16_mm": 4.012218429377654
+    },
+    "pytorch_eager": {
+      "traffic_bytes": 51126528,
+      "achieved_GBps": 22.725648971344448,
+      "pct_of_measured_copy_bw": 2.7567888277019286,
+      "flops": 8589934592,
+      "achieved_TFLOPs": 3.818210347172429,
+      "pct_of_measured_fp16_mm": 4.012218429377654
+    }
+  },
+  "speedup_vs": {
+    "triton": 8.290565603820443,
+    "pytorch_eager": 8.290565603820443
+  }
+}

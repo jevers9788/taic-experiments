@@ -1,0 +1,19 @@
+Command: .venv/bin/python scripts/verify_candidate.py SageAttentionICLR2025 runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max/final_candidate.ptx --threads-x 128 --tuning-from results/v100/SageAttentionICLR2025.json --output results/v100/taic-sage-run1-resume-verify.json
+Start: 2026-10-19T03:00:41Z
+{
+  "correct": {
+    "candidate": true,
+    "triton": true,
+    "pytorch_eager": true
+  },
+  "p50_ms": {
+    "candidate": 0.27136000990867615,
+    "triton": 2.249727964401245,
+    "pytorch_eager": 2.249727964401245
+  },
+  "speedup_vs": {
+    "triton": 8.290565603820443,
+    "pytorch_eager": 8.290565603820443
+  }
+}
+Exit: 0 2026-10-19T03:01:08Z

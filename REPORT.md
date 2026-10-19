@@ -78,7 +78,17 @@ Re-verified: correct, racecheck clean, 2.267 ms vs eager 2.988 ms and Triton
 12.672 ms (5.59x / 1.32x; `results/v100/bitdelta-run1-resume-verify.json`). The
 2% p50 difference from the first session (2.219 ms) is session-to-session variance.
 
-## TAIC run 3 (V100, SageAttention, launcher mode): NOT VALID
+## TAIC run 3b (V100, SageAttention, launcher mode): VALID after repair
+
+Resumed run 3 with `--start-json` and racecheck ON ($5.01; $20.13 total). The
+sanitizer flagged the race; TAIC's failure analysis and repair added one
+`bar.warp.sync 0xffffffff` between the P stores and the P.V loads (Volta's
+independent thread scheduling requires it). Re-verified independently
+(`results/v100/taic-sage-run1-resume-verify.json`): correct, racecheck clean,
+0.2714 ms vs the stock PyTorch path's 2.2497 ms (8.29x; Triton can't compile
+this kernel on sm_70). One improvement round found nothing faster.
+
+## TAIC run 3 (V100, SageAttention, launcher mode): NOT VALID (superseded by 3b)
 
 Triton can't compile this kernel on sm_70 (PORTING.md 13), so it ran in launcher
 mode: speedups are vs the stock PyTorch path. $15.12 spent. TAIC's accepted

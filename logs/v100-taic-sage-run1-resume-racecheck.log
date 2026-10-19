@@ -1,0 +1,11 @@
+Command: .venv/bin/python scripts/racecheck.py SageAttentionICLR2025 runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max/final_candidate.ptx --threads-x 128 --tuning-from results/v100/SageAttentionICLR2025.json --timeout 3600
+Start: 2026-10-19T03:01:08Z
+{
+  "clean": true,
+  "error": null,
+  "diagnostics": [
+    "/usr/lib/python3.10/runpy.py:126: RuntimeWarning: 'ptx_gym.evaluation.sanitizer' found in sys.modules after import of package 'ptx_gym.evaluation', but prior to execution of 'ptx_gym.evaluation.sanitizer'; this may result in unpredictable behaviour",
+    "warn(RuntimeWarning(msg))"
+  ]
+}
+Exit: 0 2026-10-19T03:01:27Z

@@ -1,0 +1,2 @@
+run: runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max
+selection: accepted runs/261019020729_SageAttentionICLR2025_gpt-6-astra_max/final_candidate.ptx 128

@@ -31,3 +31,6 @@ fi
 O=/tmp/out-$TAG; rm -rf $O && mkdir -p $O/runs $O/logs $O/results
 cp -r "$D" $O/runs/; cp logs/v100-$TAG*.log $O/logs/ 2>/dev/null; cp results/v100/$TAG-verify.json $O/results/ 2>/dev/null
 chmod -R a+rX $O; tar czf $O.tgz -C /tmp out-$TAG; echo DONE > $O.done
+# Backstop: stop the VM ourselves even if the local driver is asleep (copy-back can
+# still happen after a restart; results stay on the disk).
+sudo shutdown -h +20 'post_run done; stopping in 20 min' 2>/dev/null || true
