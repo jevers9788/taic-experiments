@@ -1,8 +1,9 @@
 # TAIC older-GPU baseline experiment
 
-Scope: L4 control and T4 (`sm_75`), $20 incremental cloud budget, no model calls.
-Upstream sources are private local checkouts under `.upstream/`, excluded from
-version control; no upstream code is redistributed here.
+Does LLM-written PTX ("AI lowering", arXiv 2609.36800) help on GPUs that Triton no
+longer optimizes for? Harness, baselines and results on a V100 (sm_70); see
+REPORT.md for results and PORTING.md for findings. Upstream TAIC and PTX Gym are
+checked out under `.upstream/` by setup and are not redistributed here.
 
 ## Pinned sources
 
@@ -16,12 +17,13 @@ defaults `start_triton_generated_ptx=False`. It still compiles the Triton refere
 and dumps its PTX before any model call, even in direct-generation mode. Its default model
 is `gpt-6-astra`, reasoning effort `max`. Do not run `agent.py` during setup.
 
-## Cloud
+## Cloud (GCP)
 
-Project `<gcp-project>`, existing L4 `l4-20260917-140617-17234`, zone `us-west1-a`.
-A two-hour STOP scheduling limit was installed before attempting startup.
-Initial startup failed with `ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS`; see logs.
-No calibration numbers are available yet.
+Copy `config.example.sh` to `config.local.sh` (gitignored) and set `GCP_PROJECT`
+(a project with GPU quota) and, optionally, VM naming and the remote directory.
+Scripts read it via `scripts/config.sh`. VMs are on-demand with a run-time STOP
+limit set at creation; GPU capacity is often exhausted, so `provision.sh` tries
+zones in order (`logs/*-create-*.log` show past attempts).
 
 Pricing sources (planning only, not measured charges):
 https://cloud.google.com/products/compute/pricing/accelerator-optimized
@@ -31,14 +33,11 @@ Stop VMs when idle. Disk charges persist while stopped. Use `/tmp` staging and
 absolute paths for report downloads. NCU must run through `sudo -E` and report
 ownership must be restored afterward.
 
-## Resume (draft; GPU execution blocked)
+## Running it
 
-1. Check `logs/final-instances.log` and confirm GCP capacity. Before starting
-   the existing L4, set a two-hour STOP limit with `gcloud compute instances
-   set-scheduling ... --max-run-duration=7200s --instance-termination-action=STOP`.
-   `scripts/provision.sh l4|t4 ZONE...` tries zones in order and creates at most one VM with the same limit.
-   These are per-start limits, not a cumulative $20 billing guard. Track all
-   sessions and disk charges; do not repeatedly restart without checking budget.
+1. `bash scripts/provision.sh l4|t4|v100|cpu ZONE...` creates at most one VM
+   (first zone with capacity) with a run-time STOP limit. Limits are per start,
+   not a billing cap: track sessions and disk charges.
 2. Copy this project's scripts to an absolute directory on the VM. Run
    `bash scripts/setup-vm.sh` there, saving stdout/stderr to a log. Driver setup
    can reboot; reconnect and rerun. Do not run this against active shared jobs.

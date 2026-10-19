@@ -12,3 +12,6 @@ runs/
 results/*/ptx/
 # TAIC run traces contain upstream prompt text (not ours to redistribute).
 results/**/taic-fixture*/
+
+# Personal settings (GCP project etc.)
+config.local.sh

@@ -10,9 +10,10 @@ case $gpu in
   cpu) machine=${MACHINE:-n2-standard-32}; accel= ;;
   *) echo "unknown gpu $gpu" >&2; exit 2 ;;
 esac
-vm=taic-$gpu-20261015
-project=<gcp-project>
 cd "$(dirname "$0")/.."
+source scripts/config.sh
+vm=$(vm_name "$gpu")
+project=$GCP_PROJECT
 mkdir -p logs
 if [[ -n $(gcloud compute instances list --project="$project" --filter="name=$vm" --format='value(name)') ]]; then
   echo "$vm already exists. Inspect and reuse it." >&2
