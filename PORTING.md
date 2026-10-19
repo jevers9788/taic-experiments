@@ -5,6 +5,7 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
 
 1. PTX Gym bundles patched Triton 3.6.0 and CUDA 12.8.93 ptxas. Use a separate
    Python environment; stock Triton cannot replace its PTX-injection changes.
+   TODO: dont understand ^
 2. TAIC README and implementation disagree about the initial candidate.
    `agent.py:run_agent_loop` defaults `start_triton_generated_ptx=False`, but
    always creates a baseline evaluator and dumps Triton PTX before opening a
@@ -22,12 +23,17 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
    SageAttention's launch (logs/v100-ptx-launcher-gpu-test.log).
    `scripts/baselines.py` now saves each kernel's Triton PTX (entry ABI) and
    compile metadata to `results/<gpu>/ptx/`; the grid is not yet captured.
+
+   TODO: simplify and condense. explain the problem and the solution in one short note. ^
+
 3. FlashAttention forward launches with IS_CAUSAL=False, while forward_torch
    applies a triangular causal mask. The local baseline draft uses a noncausal
    independent reference and reports the upstream eager reference as a failure
    if it disagrees. No source computation or tolerance has been silently changed.
    SDPA output-only timing excludes the LSE output; it is not a complete drop-in
    replacement for the upstream output-plus-LSE contract.
+   TODO: i think this is explain in the paper. double check ^
+
 4. RMSNorm's reference squares FP16 values, while the Triton kernel promotes to
    FP32. The independent reference uses FP32 intermediates. Its tuning space
    includes block sizes that change the reduction domain; correctness must gate
@@ -54,6 +60,8 @@ submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edite
    is unchanged here; a weak *lowering* for this target is what AI lowering
    replaces. cuBLAS / SDPA and the measured ceilings are reported as context
    (attainability, and to avoid overclaiming), not as the comparison baseline.
+
+   TODO: this is interesting, worth exploring more
 
 8. Released TAIC cannot start. `agent.py:545` and `utils/setup.py:199` pass an operator object to
    `ptx_gym.dump_kernel_ptx`, which (in the pinned PTX Gym, `ptx_gym/api.py`)

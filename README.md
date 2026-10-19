@@ -1,19 +1,11 @@
 # Triton AI Compiler - Legacy Hardware Experiments
 
-Does LLM-written PTX ("AI lowering", arXiv 2609.36800) help on GPUs that Triton no
-longer optimizes for? Harness, baselines and results on a V100 (sm_70).
+Does LLM-written PTX ("AI lowering", [arXiv 2609.36800](https://arxiv.org/pdf/2609.36800)) help on GPUs that Triton no longer optimizes for? Harness, baselines and results on a V100 (sm_70).
 
 See [REPORT.md](REPORT.md) for measured performance, validation status, and remaining
 experiments. [PORTING.md](PORTING.md) documents compatibility problems, upstream
 bugs, and the workarounds used to run the experiments.
 
-## Pinned sources
-
-- TAIC: https://github.com/francois141/triton_ai_compiler at
-  `6a00d1261c803fecdfa74c1c349b339a026b06ad`
-- PTX Gym (TAIC submodule): `aa634dbc537454230111fafac3ee1f7769dbfa6c`
-- PTX Gym includes a modified Triton 3.6.0 that can execute candidate PTX in place
-  of compiler-generated PTX. Stock Triton cannot replace this build.
 
 ## Cloud (GCP)
 
