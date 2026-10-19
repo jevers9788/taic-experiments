@@ -1,4 +1,4 @@
-# Inspection findings, not GPU results
+# Findings
 
 Sources: TAIC 6a00d1261c803fecdfa74c1c349b339a026b06ad and its PTX Gym
 submodule aa634dbc537454230111fafac3ee1f7769dbfa6c. No upstream source was edited.
