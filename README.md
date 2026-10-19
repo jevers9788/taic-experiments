@@ -7,12 +7,10 @@ experiments. [PORTING.md](PORTING.md) documents compatibility problems, upstream
 bugs, and the workarounds used to run the experiments.
 
 
-## Cloud (GCP)
+## Running it
 
 This experiment is only supported on GCP for now.
 Copy `config.example.sh` to `config.local.sh` and set `GCP_PROJECT`. VM naming and the remote directory are optional.
-
-## Running it
 
 1. Run `bash scripts/provision.sh v100 ZONE...` (or choose `l4`, `t4`, or `cpu`).
    It creates one VM in the first zone with capacity, with a two-hour STOP limit.
@@ -42,10 +40,7 @@ Copy `config.example.sh` to `config.local.sh` and set `GCP_PROJECT`. VM naming a
 - **Generation:** TAIC defaults to `gpt-6-astra` with `max` reasoning effort and
   generates directly from Triton source. It uses profiler feedback to propose
   improvements, keeping faster candidates that pass the configured checks.
-  The budget gate runs before each request, so a request can finish over budget.
-- **Offline check:** `.venv/bin/python scripts/taic_fixture.py --trace-path results/<gpu>/taic-fixture`
-  exercises TAIC's loop with a stub model and handwritten ReLU PTX. It makes no
-  API calls and is included in `run-session.sh`.
+  The budget limit check runs before each request, so a request can finish over budget.
 - **Kernels Triton cannot compile:** prefix the generation command with
   `PTX_LAUNCHER_KERNELS=<Kernel>` for cases such as SageAttention or FP8 on V100.
   This bypasses Triton compilation. In this mode, output fields named `triton`
